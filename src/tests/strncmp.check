@@ -1,0 +1,55 @@
+#suite strncmp
+
+#test strncmp1
+// Strings have same symbols
+char str1[S21_MAX] = "Hello, friend!";
+char substr1[S21_MAX] = "Hello, friend!";
+ck_assert_int_eq(strncmp(str1, substr1, S21_MAX), s21_strncmp(str1, substr1, S21_MAX));
+
+#test strncmp2
+// Strings have different words
+char str2[S21_MAX] = "Hello, friend!";
+char substr2[S21_MAX] = "Hello, Alex!";
+ck_assert_int_eq(strncmp(str2, substr2, S21_MAX), s21_strncmp(str2, substr2, S21_MAX));
+
+#test strncmp3
+// Strings have different symbols
+char str3[S21_MAX] = "Hello, Friend!";
+char substr3[S21_MAX] = "Hello, friend!";
+ck_assert_int_eq(strncmp(str3, substr3, S21_MAX), s21_strncmp(str3, substr3, S21_MAX));
+
+#test strncmp4
+// First string is empty
+char str4[S21_MAX] = "";
+char substr4[S21_MAX] = "Maddy";
+ck_assert_int_eq(strncmp(str4, substr4, S21_MAX), s21_strncmp(str4, substr4, S21_MAX));
+
+#test strncmp5
+// Second string is empty
+char str5[S21_MAX] = "Maddy";
+char substr5[S21_MAX] = "";
+ck_assert_int_eq(strncmp(str5, substr5, S21_MAX), s21_strncmp(str5, substr5, S21_MAX));
+
+#test strncmp6
+// Only first n characters should be compared
+char str6[S21_MAX] = "Hello, friend!";
+char substr6[S21_MAX] = "Hello, Alex!";
+ck_assert_int_eq(strncmp(str6, substr6, 5), s21_strncmp(str6, substr6, 5));
+
+#test strncmp7
+// n is 0
+char str7[S21_MAX] = "Hello, friend!";
+char substr7[S21_MAX] = "Hello, Alex!";
+ck_assert_int_eq(strncmp(str7, substr7, 0), s21_strncmp(str7, substr7, 0));
+
+#test strncmp8
+// One of the strings is NULL
+char str8[S21_MAX] = "Hello, friend!";
+char *substr8 = NULL;
+ck_assert_int_eq(S21_ERROR, s21_strncmp(str8, substr8, S21_MAX));
+
+#test strncmp9
+// First string is NULL
+char *str9 = NULL;
+char substr9[S21_MAX] = "Hello, friend!";
+ck_assert_int_eq(S21_ERROR, s21_strncmp(str9, substr9, S21_MAX));

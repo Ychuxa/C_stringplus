@@ -1,0 +1,66 @@
+#suite memcpy
+
+#test memcpy1
+// Copy simple word
+char str1[S21_MAX] = "Hello, world!";
+char substr1[S21_MAX] = "World";
+ck_assert_pstr_eq(memcpy(str1, substr1, 5), s21_memcpy(str1, substr1, 5));
+
+#test memcpy2
+// Copy more bytes
+char str2[S21_MAX] = "Hello, world!";
+char substr2[S21_MAX] = "Bonjour";
+ck_assert_pstr_eq(memcpy(str2, substr2, 13), s21_memcpy(str2, substr2, 13));
+
+#test memcpy3
+// Copy part of the substring
+char str3[S21_MAX] = "Hello, world!";
+char substr3[S21_MAX] = "Bonjour, world";
+ck_assert_pstr_eq(memcpy(str3, substr3, 7), s21_memcpy(str3, substr3, 7));
+
+#test memcpy4
+// Empty string as the haystack
+char str4[S21_MAX] = "";
+char substr4[S21_MAX] = "Hello, world!";
+ck_assert_pstr_eq(memcpy(str4, substr4, 13), s21_memcpy(str4, substr4, 13));
+
+#test memcpy5
+// Empty string as the needle
+char str5[S21_MAX] = "Hello, world!";
+char substr5[S21_MAX] = "";
+ck_assert_pstr_eq(memcpy(str5, substr5, 5), s21_memcpy(str5, substr5, 5));
+
+#test memcpy6
+// Check big numbers of bytes
+char str6[S21_MAX] = "Hello, world!";
+char substr6[S21_MAX] = "school";
+ck_assert_pstr_eq(memcpy(str6, substr6, strlen(substr6)), s21_memcpy(str6, substr6, strlen(substr6)));
+
+#test memcpy7
+// NULL as the haystack
+char substr7[S21_MAX] = "world";
+ck_assert_ptr_eq(s21_memcpy(NULL, substr7, S21_MAX), NULL);
+
+#test memcpy8
+// NULL as the needle
+char str8[S21_MAX] = "Hello, world!";
+char *substr8 = NULL;
+ck_assert_pstr_eq(s21_memcpy(str8, substr8, S21_MAX), NULL);
+
+#test memcpy9
+// Both haystack and needle are NULL
+char *str9 = NULL;
+char *substr9 = NULL;
+ck_assert_pstr_eq(s21_memcpy(str9, substr9, S21_MAX), NULL);
+
+#test memcpy10
+// Check 0 bytes
+char str10[S21_MAX] = "Hello, world!";
+char substr10[S21_MAX] = "Bonjour!";
+ck_assert_pstr_eq(memcpy(str10, substr10, 0), s21_memcpy(str10, substr10, 0));
+
+#test memcpy11
+// Check 0 bytes and second string is NULL
+char str11[S21_MAX] = "Hello, world!";
+char *substr11 = NULL;
+ck_assert_pstr_eq(memcpy(str11, substr11, 0), s21_memcpy(str11, substr11, 0));

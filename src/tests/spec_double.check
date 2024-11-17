@@ -1,0 +1,111 @@
+#suite sprintf_spec_double
+
+#test sprintf_spec_double1
+// Testing basic formatting of a large decimal number
+double x1 = -332483472728.4579;
+char buff1_1[5000] = "";
+char buff1_2[5000] = "";
+sprintf(buff1_1, "%f", x1);
+s21_sprintf(buff1_2, "%f", x1);
+ck_assert_str_eq(buff1_1, buff1_2);
+
+#test sprintf_spec_double2
+// Testing formatting with width (no precision)
+double x1 = -332483472728.4579;
+char buff2_1[5000] = "";
+char buff2_2[5000] = "";
+sprintf(buff2_1, "%5.f", x1);
+s21_sprintf(buff2_2, "%5.f", x1);
+ck_assert_str_eq(buff2_1, buff2_2);
+
+#test sprintf_spec_double3
+// Testing formatting without width (default precision)
+double x1 = -332483472728.4579;
+char buff3_1[5000] = "";
+char buff3_2[5000] = "";
+sprintf(buff3_1, "%5f", x1);
+s21_sprintf(buff3_2, "%5f", x1);
+ck_assert_str_eq(buff3_1, buff3_2);
+
+#test sprintf_spec_double4
+// Testing formatting without width, precision specified
+double x1 = -332483472728.4579;
+char buff4_1[5000] = "";
+char buff4_2[5000] = "";
+sprintf(buff4_1, "%.5f", x1);
+s21_sprintf(buff4_2, "%.5f", x1);
+ck_assert_str_eq(buff4_1, buff4_2);
+
+#test sprintf_spec_double5
+// Testing formatting with width and precision
+double x1 = -332483472728.4579;
+char buff5_1[5000] = "";
+char buff5_2[5000] = "";
+sprintf(buff5_1, "%5.5f", x1);
+s21_sprintf(buff5_2, "%5.5f", x1);
+ck_assert_str_eq(buff5_1, buff5_2);
+
+#test sprintf_spec_double6
+// Testing basic formatting of a long double
+long double x2 = -12.4579;
+char buff6_1[S21_MAX] = "";
+char buff6_2[S21_MAX] = "";
+sprintf(buff6_1, "%Lf", x2);
+s21_sprintf(buff6_2, "%Lf", x2);
+ck_assert_str_eq(buff6_1, buff6_2);
+
+#test sprintf_spec_double7
+// Testing formatting with width and precision for long double
+long double x2 = -12.4579;
+char buff7_1[S21_MAX] = "";
+char buff7_2[S21_MAX] = "";
+sprintf(buff7_1, "%5.5Lf", x2);
+s21_sprintf(buff7_2, "%5.5Lf", x2);
+ck_assert_str_eq(buff7_1, buff7_2);
+
+#test sprintf_spec_double8
+// Testing the use of the '*' specifier for dynamic width
+int s = 3;
+double x3 = -12.4579;
+char buff8_1[S21_MAX] = "";
+char buff8_2[S21_MAX] = "";
+sprintf(buff8_1, "%*.f", s, x3);
+s21_sprintf(buff8_2, "%*.f", s, x3);
+ck_assert_str_eq(buff8_1, buff8_2);
+
+#test sprintf_spec_double9
+// Testing the use of the '*' specifier for dynamic precision
+int s = 3;
+double x3 = -12.4579;
+char buff9_1[S21_MAX] = "";
+char buff9_2[S21_MAX] = "";
+sprintf(buff9_1, "%5.*f", s, x3);
+s21_sprintf(buff9_2, "%5.*f", s, x3);
+ck_assert_str_eq(buff9_1, buff9_2);
+
+#test sprintf_spec_double10
+// Testing basic formatting of a double number
+double num = 1.123456789;
+char buff10_1[S21_MAX] = "";
+char buff10_2[S21_MAX] = "";
+sprintf(buff10_1, "%lf", num);
+s21_sprintf(buff10_2, "%lf", num);
+ck_assert_str_eq(buff10_1, buff10_2);
+
+#test sprintf_spec_double11
+// Testing formatting with precision for a simple double number
+double num = 1.123456789;
+char buff11_1[S21_MAX] = "";
+char buff11_2[S21_MAX] = "";
+sprintf(buff11_1, "%.4lf", num);
+s21_sprintf(buff11_2, "%.4lf", num);
+ck_assert_str_eq(buff11_1, buff11_2);
+
+#test sprintf_spec_double12
+// Testing formatting with field width for a simple double number
+double num = 1.123456789;
+char buff12_1[S21_MAX] = "";
+char buff12_2[S21_MAX] = "";
+sprintf(buff12_1, "%20lf", num);
+s21_sprintf(buff12_2, "%20lf", num);
+ck_assert_str_eq(buff12_1, buff12_2);

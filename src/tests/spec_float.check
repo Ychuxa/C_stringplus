@@ -1,0 +1,681 @@
+#suite sprintf_spec_float
+
+#test sprintf_spec_float1
+// Check case with flag %g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %g", x);
+s21_sprintf(buff2, "TEST1 %g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float2
+// Check case with flag %0g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %0g", x);
+s21_sprintf(buff2, "TEST2 %0g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float3
+// Check case with flag % g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 % g", x);
+s21_sprintf(buff2, "TEST3 % g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float4
+// Check case with flag %-g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %-g", x);
+s21_sprintf(buff2, "TEST4 %-g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float5
+// Check case with flag %+g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %+g", x);
+s21_sprintf(buff2, "TEST5 %+g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float6
+// Check case with specificator %.g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %.g", x);
+s21_sprintf(buff2, "TEST1 %.g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float7
+// Check case with specificator %5.g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %5.g", x);
+s21_sprintf(buff2, "TEST2 %5.g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float8
+// Check case with specificator %5g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %5g", x);
+s21_sprintf(buff2, "TEST3 %5g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float9
+// Check case with specificator %.5g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %.5g", x);
+s21_sprintf(buff2, "TEST4 %.5g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float10
+// Check case with specificator %5.5g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %5.5g", x);
+s21_sprintf(buff2, "TEST5 %5.5g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float11
+// Check case with specificator %.g and big number
+double x = -122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %.g", x);
+s21_sprintf(buff2, "TEST1 %.g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float12
+// Check case with specificator %5.g and big number
+double x = -122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %5.g", x);
+s21_sprintf(buff2, "TEST2 %5.g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float13
+// Check case with specificator %5g and big number
+double x = -122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %5g", x);
+s21_sprintf(buff2, "TEST3 %5g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float14
+// Check case with specificator %.5g and big number
+double x = -122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %.5g", x);
+s21_sprintf(buff2, "TEST4 %.5g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float15
+// Check case with specificator %5.5g and big number
+double x = -122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %5.5g", x);
+s21_sprintf(buff2, "TEST5 %5.5g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float16
+// Check length specificator %Lg
+long double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %Lg", x);
+s21_sprintf(buff2, "TEST1 %Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float17
+// Check length specificator %5.Lg
+long double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %5.Lg", x);
+s21_sprintf(buff2, "TEST2 %5.Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float18
+// Check length specificator %5Lg
+long double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %5Lg", x);
+s21_sprintf(buff2, "TEST3 %5Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float19
+// Check length specificator %.5Lg
+long double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %.5Lg", x);
+s21_sprintf(buff2, "TEST4 %.5Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float20
+// Check length specificator %5.5Lg
+long double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %5.5Lg", x);
+s21_sprintf(buff2, "TEST5 %5.5Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float21
+// Check flags %+-#g together
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %+-#g", x);
+s21_sprintf(buff2, "TEST1 %+-#g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float22
+// Check flag %-
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %-g", x);
+s21_sprintf(buff2, "TEST2 %-g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float23
+// Check flags %+-
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %+-g", x);
+s21_sprintf(buff2, "TEST3 %+-g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float24
+// Check flags %+0
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %+0g", x);
+s21_sprintf(buff2, "TEST4 %+0g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float25
+// Check flag combination %- and space
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %- g", x);
+s21_sprintf(buff2, "TEST5 %- g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float26
+// Check flags %+-# together with width 12 - g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %+-#12g", x);
+s21_sprintf(buff2, "TEST1 %+-#12g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float27
+// Check flags %0 and precision .11 - g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %03.11g", x);
+s21_sprintf(buff2, "TEST2 %03.11g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float28
+// Check flags %+-. and precision .2 - g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %+-.2g", x);
+s21_sprintf(buff2, "TEST3 %+-.2g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float29
+// Check flags %+0, width 4 and precision .2 - g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %+04.2g", x);
+s21_sprintf(buff2, "TEST4 %+04.2g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float30
+// Check flag combination %- with space and precision . - g
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %- .g", x);
+s21_sprintf(buff2, "TEST5 %- .g", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float31
+// Check '*' for width with specificator - g
+int s = 3;
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %*.g", s, x);
+s21_sprintf(buff2, "TEST1 %*.g", s, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float32
+// Check '*' for precision with width 5 and specificator - g
+int s = 3;
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %5.*g", s, x);
+s21_sprintf(buff2, "TEST2 %5.*g", s, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float33
+// Check '*' for width and precision with specificator - g
+int s = 3;
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %*.*g", s, s, x);
+s21_sprintf(buff2, "TEST3 %*.*g", s, s, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float34
+// Check '*' for width with long double specificator - g
+int s = 3;
+long double y = 1245.32435;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %*Lg", s, y);
+s21_sprintf(buff2, "TEST4 %*Lg", s, y);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float35
+// Check '*' for width and precision with long double specificator - g
+int s = 3;
+long double y = 1245.32435;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %*.*Lg", s, s, y);
+s21_sprintf(buff2, "TEST5 %*.*Lg", s, s, y);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float36
+// Check flags combination %+-#12Lg - g
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %+-#12Lg", x);
+s21_sprintf(buff2, "TEST1 %+-#12Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float37
+// Check flags combination %03.11Lg - g
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %03.11Lg", x);
+s21_sprintf(buff2, "TEST2 %03.11Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float38
+// Check flags combination %+-.2Lg - g
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %+-.2Lg", x);
+s21_sprintf(buff2, "TEST3 %+-.2Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float39
+// Check flags combination %+04.2Lg - g
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %+04.2Lg", x);
+s21_sprintf(buff2, "TEST4 %+04.2Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float40
+// Check flags combination %- .Lg - g
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %- .Lg", x);
+s21_sprintf(buff2, "TEST5 %- .Lg", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float41
+// Check case with flag %G
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %G", x);
+s21_sprintf(buff2, "TEST1 %G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float42
+// Check case with flag %0G
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %0G", x);
+s21_sprintf(buff2, "TEST2 %0G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float43
+// Check case with flag % G
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 % G", x);
+s21_sprintf(buff2, "TEST3 % G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float44
+// Check case with flag %-G
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %-G", x);
+s21_sprintf(buff2, "TEST4 %-G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float45
+// Check case with flag %+G
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %+G", x);
+s21_sprintf(buff2, "TEST5 %+G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float46
+// Check case with specificator %G
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %G", x);
+s21_sprintf(buff2, "TEST1 %G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float47
+// Check case with specificator %.G
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %.G", x);
+s21_sprintf(buff2, "TEST2 %.G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float48
+// Check case with specificator %5G
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %5G", x);
+s21_sprintf(buff2, "TEST3 %5G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float49
+// Check case with specificator %.5G
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %.5G", x);
+s21_sprintf(buff2, "TEST4 %.5G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float50
+// Check case with specificator %5.5G
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %5.5G", x);
+s21_sprintf(buff2, "TEST5 %5.5G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float51
+// Check case with specificator %G and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %G", x);
+s21_sprintf(buff2, "TEST1 %G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float52
+// Check case with specificator %.G and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %.G", x);
+s21_sprintf(buff2, "TEST2 %.G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float53
+// Check case with specificator %5G and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %5G", x);
+s21_sprintf(buff2, "TEST3 %5G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float54
+// Check case with specificator %.5G and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %.5G", x);
+s21_sprintf(buff2, "TEST4 %.5G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float55
+// Check case with specificator %5.5G and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %5.5G", x);
+s21_sprintf(buff2, "TEST5 %5.5G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float56
+// Check case with specificator %LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %LG", x);
+s21_sprintf(buff2, "TEST1 %LG", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float57
+// Check case with specificator %.LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %.LG", x);
+s21_sprintf(buff2, "TEST2 %.LG", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float58
+// Check case with specificator %5LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %5LG", x);
+s21_sprintf(buff2, "TEST3 %5LG", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float59
+// Check case with specificator %.5LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %.5LG", x);
+s21_sprintf(buff2, "TEST4 %.5LG", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float60
+// Check case with specificator %5.5LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %5.5LG", x);
+s21_sprintf(buff2, "TEST5 %5.5LG", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float61
+// Check flags combination with %+-#G
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %+-#G", x);
+s21_sprintf(buff2, "TEST1 %+-#G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float62
+// Check flags combination with %+0G
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %+0G", x);
+s21_sprintf(buff2, "TEST2 %+0G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float63
+// Check flags combination with %+-G
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %+-G", x);
+s21_sprintf(buff2, "TEST3 %+-G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float64
+// Check flags combination with '%+0G'
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %+0G", x);
+s21_sprintf(buff2, "TEST4 %+0G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float65
+// Check flags combination with '%- G'
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %- G", x);
+s21_sprintf(buff2, "TEST5 %- G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float66
+// Check flags combination with '%+-#12G'
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %+-#12G", x);
+s21_sprintf(buff2, "TEST1 %+-#12G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float67
+// Check flags combination with %03.11G
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %03.11G", x);
+s21_sprintf(buff2, "TEST2 %03.11G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float68
+// Check flags combination with %+-.2G
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %+-.2G", x);
+s21_sprintf(buff2, "TEST3 %+-.2G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float69
+// Check flags combination with %+04.2G
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %+04.2G", x);
+s21_sprintf(buff2, "TEST4 %+04.2G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float70
+// Check flags combination with % .G
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 % .G", x);
+s21_sprintf(buff2, "TEST5 % .G", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float71
+// Check flags combination with %+#012LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %+#012LG", x);
+s21_sprintf(buff2, "TEST1 %+#012LG", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float72
+// Check flags combination with %-3.11LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %-3.11LG", x);
+s21_sprintf(buff2, "TEST2 %-3.11LG", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float73
+// Check flags combination with %+-.2LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %+-.2LG", x);
+s21_sprintf(buff2, "TEST3 %+-.2LG", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float74
+// Check flags combination with %+04.2LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %+04.2LG", x);
+s21_sprintf(buff2, "TEST4 %+04.2LG", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_float75
+// Check flags combination with %+.LG
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %+.LG", x);
+s21_sprintf(buff2, "TEST5 %+.LG", x);
+ck_assert_str_eq(buff, buff2);

@@ -1,0 +1,43 @@
+#suite rounding_double
+
+#test rounding_double1
+// Testing the rounding of a regular positive number
+char number1[] = "123.45678";
+s21_rounding_double(3, 2, number1);
+ck_assert_str_eq(number1, "123.46");
+
+#test rounding_double2
+// Testing the rounding of a number where the fractional part is less than 1
+char number2[] = "0.00056";
+s21_rounding_double(1, 3, number2);
+ck_assert_str_eq(number2, "0.001");
+
+#test rounding_double3
+// Testing the rounding of a number less than 1, but more than 0
+char number3[] = "0.12345";
+s21_rounding_double(2, 3, number3);
+ck_assert_str_eq(number3, "0.123");
+
+#test rounding_double4
+// Testing the rounding of a negative number
+char number4[] = "-9876.54321";
+s21_rounding_double(6, 2, number4);
+ck_assert_str_eq(number4, "-9876.54");
+
+#test rounding_double5
+// Testing rounding up of the number
+char number5[] = "123.4999";
+s21_rounding_double(4, 2, number5);
+ck_assert_str_eq(number5, "123.50");
+
+#test rounding_double6
+// Testing zero precision rounding
+char number6[] = "123.45678";
+s21_rounding_double(4, 0, number6);
+ck_assert_str_eq(number6, "123");
+
+#test rounding_double7
+// Testing rounding when precision is more than number's decimal part
+char number7[] = "123.4";
+s21_rounding_double(4, 4, number7);
+ck_assert_str_eq(number7, "123.4");

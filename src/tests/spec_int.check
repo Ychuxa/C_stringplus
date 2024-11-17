@@ -1,0 +1,102 @@
+#suite sprintf_spec_int
+
+#test sprintf_spec_int1
+// Check one case
+int x = 1;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "All in %d piece.", x);
+s21_sprintf(buff2, "All in %d piece.", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int2
+// Check few cases
+int x = 10;
+int y  = 1;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%d to %d", x, y);
+s21_sprintf(buff2, "%d to %d", x, y);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int3
+// Check signed decimal integer
+int x = 12;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "Ten in the eighth number system - %i", x);
+s21_sprintf(buff2, "Ten in the eighth number system - %i", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int4
+// Check flag '+'
+int x = 156;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%+d", x);
+s21_sprintf(buff2, "%+d", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int5
+// Check flag '0' and width
+int x = 156;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%09d", x);
+s21_sprintf(buff2, "%09d", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int6
+// Check specificator
+int x = 156;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%.9d", x);
+s21_sprintf(buff2, "%.9d", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int7
+// Check flag '-' and width
+int x = 156;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%-3d", x);
+s21_sprintf(buff2, "%-3d", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int8
+// Check short int
+short int x = 16;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%-3hd", x);
+s21_sprintf(buff2, "%-3hd", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int9
+// Check x = 0
+int x = 0;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%-.d", x);
+s21_sprintf(buff2, "%-.d", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int10
+// Check x < 0
+int x = -32;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%-.d", x);
+s21_sprintf(buff2, "%-.d", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_int11
+// Check "*"
+int x = -32;
+int h = 5;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%*.d", h, x);
+s21_sprintf(buff2, "%*.d", h, x);
+ck_assert_str_eq(buff, buff2);

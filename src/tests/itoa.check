@@ -1,0 +1,216 @@
+#suite itoa
+
+#test itoa1
+// Tests if the function returns NULL for unsupported base
+char str1[S21_MAX];
+ck_assert_ptr_eq(util_itoa(12345, str1, 1), NULL);
+
+#test itoa2
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "11000000111001"; 
+ck_assert_str_eq(util_itoa(12345, str, 2), test);
+
+#test itoa3
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "121221020"; 
+ck_assert_str_eq(util_itoa(12345, str, 3), test);
+
+#test itoa4
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "3000321";
+ck_assert_str_eq(util_itoa(12345, str, 4), test);
+
+#test itoa5
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "343340"; 
+ck_assert_str_eq(util_itoa(12345, str, 5), test);
+
+#test itoa6
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "133053"; 
+ck_assert_str_eq(util_itoa(12345, str, 6), test);
+
+#test itoa7
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "50664"; 
+ck_assert_str_eq(util_itoa(12345, str, 7), test);
+
+#test itoa8
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "30071"; 
+ck_assert_str_eq(util_itoa(12345, str, 8), test);
+
+#test itoa9
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "17836"; 
+ck_assert_str_eq(util_itoa(12345, str, 9), test);
+
+#test itoa10
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "12345"; 
+ck_assert_str_eq(util_itoa(12345, str, 10), test);
+
+#test itoa11
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "9303"; 
+ck_assert_str_eq(util_itoa(12345, str, 11), test);
+
+#test itoa12
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "7189"; 
+ck_assert_str_eq(util_itoa(12345, str, 12), test);
+
+#test itoa13
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "5808"; 
+ck_assert_str_eq(util_itoa(12345, str, 13), test);
+
+#test itoa14
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "46DB"; 
+ck_assert_str_eq(util_itoa(12345, str, 14), test);
+
+#test itoa15
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "39D0"; 
+ck_assert_str_eq(util_itoa(12345, str, 15), test);
+
+#test itoa16
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "3039"; 
+ck_assert_str_eq(util_itoa(12345, str, 16), test);
+
+#test itoa17
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "28C3"; 
+ck_assert_str_eq(util_itoa(12345, str, 17), test);
+
+#test itoa18
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "221F"; 
+ck_assert_str_eq(util_itoa(12345, str, 18), test);
+
+#test itoa19
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "1F3E"; 
+ck_assert_str_eq(util_itoa(12345, str, 19), test);
+
+#test itoa20
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "1AH5"; 
+ck_assert_str_eq(util_itoa(12345, str, 20), test);
+
+#test itoa21
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "16KI"; 
+ck_assert_str_eq(util_itoa(12345, str, 21), test);
+
+#test itoa22
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "13B3"; 
+ck_assert_str_eq(util_itoa(12345, str, 22), test);
+
+#test itoa23
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "107H"; 
+ck_assert_str_eq(util_itoa(12345, str, 23), test);
+
+#test itoa24
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "LA9"; 
+ck_assert_str_eq(util_itoa(12345, str, 24), test);
+
+#test itoa25
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "JIK"; 
+ck_assert_str_eq(util_itoa(12345, str, 25), test);
+
+#test itoa26
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "I6L"; 
+ck_assert_str_eq(util_itoa(12345, str, 26), test);
+
+#test itoa27
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "GP6"; 
+ck_assert_str_eq(util_itoa(12345, str, 27), test);
+
+#test itoa28
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "FKP"; 
+ck_assert_str_eq(util_itoa(12345, str, 28), test);
+
+#test itoa29
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "EJK";
+ck_assert_str_eq(util_itoa(12345, str, 29), test);
+
+#test itoa30
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "DLF"; 
+ck_assert_str_eq(util_itoa(12345, str, 30), test);
+
+#test itoa31
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "CQ7"; 
+ck_assert_str_eq(util_itoa(12345, str, 31), test);
+
+#test itoa32
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "C1P"; 
+ck_assert_str_eq(util_itoa(12345, str, 32), test);
+
+#test itoa33
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "BB3"; 
+ck_assert_str_eq(util_itoa(12345, str, 33), test);
+
+#test itoa34
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "AN3"; 
+ck_assert_str_eq(util_itoa(12345, str, 34), test);
+
+#test itoa35
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "A2P"; 
+ck_assert_str_eq(util_itoa(12345, str, 35), test);
+
+#test itoa36
+// Check the conversion of an integer into a binary string
+char str[S21_MAX];
+char test[S21_MAX] = "9IX"; 
+ck_assert_str_eq(util_itoa(12345, str, 36), test);

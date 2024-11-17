@@ -1,0 +1,54 @@
+#suite strncpy
+
+#test strncpy1
+char str1[50] = "ABCDEF";
+char str2[50] = "12345";
+ck_assert_str_eq(strncpy(str1, str2, 1), s21_strncpy(str1, str2, 1));
+
+#test strncpy2
+char str1[50] = "Hi, School 21!";
+char str2[50] = "Hi, School 21!";
+char str3[] = "bye-bye!";
+s21_size_t n = 10;
+ck_assert_str_eq(strncpy(str1, str3, n), s21_strncpy(str2, str3, n));
+
+#test strncpy3
+char str1[50] = "ABCDEF";
+char str2[50] = "12345";
+char str3[] = "GOOD";
+s21_size_t n = 5;
+ck_assert_str_eq(strncpy(str1, str3, n), s21_strncpy(str2, str3, n));
+
+#test strncpy4
+char str1[50] = " *o0.";
+char str2[50] = "  -U_U- ";
+char str3[50] = " *o0.";
+char str4[50] = "  -U_U- ";
+ck_assert_str_eq(strncpy(str1, str2, 3), s21_strncpy(str3, str4, 3));
+
+#test strncpy5
+char str1[50] = "     ABCDEF   ";
+char str2[50] = "12345";
+ck_assert_str_eq(strncpy(str1, str2, 9), s21_strncpy(str1, str2, 9));
+
+#test strncpy6
+char str1[50] = "\v/n\0/r";
+char str2[50] = "4y/>\\9\0";
+ck_assert_str_eq(strncpy(str1, str2, 15), s21_strncpy(str1, str2, 15));
+
+#test strncpy7
+char str1[50] = "   dest   ";
+char str2[50] = "S21_SCHOOL";
+ck_assert_str_eq(strncpy(str1, str2, 5), s21_strncpy(str1, str2, 5));
+
+#test strncpy8
+// Source string is NULL
+char str1[50] = "Hello, world!";
+char *str2 = NULL;
+ck_assert_ptr_eq(NULL, s21_strncpy(str1, str2, 5));
+
+#test strncpy9
+// Destination string is NULL
+char *str1 = NULL;
+char str2[50] = "Hello, world!";
+ck_assert_ptr_eq(NULL, s21_strncpy(str1, str2, 5));

@@ -1,0 +1,21 @@
+#suite strlen
+
+#test strlen1
+// normal string
+char str1[S21_MAX] = "hello world";
+ck_assert_int_eq(strlen(str1), s21_strlen(str1));
+
+#test strlen2
+// empty string
+char str1[S21_MAX] = "";
+ck_assert_int_eq(strlen(str1), s21_strlen(str1));
+
+#test strlen3
+// pointer
+char *str1 = "Hello is a World";
+ck_assert_int_eq(strlen(str1), s21_strlen(str1));
+
+#test strlen4
+// NULL pointer
+char *str1 = NULL;
+ck_assert_msg(s21_strlen(str1) == 0, "s21_strlen should return 0 for NULL pointer");

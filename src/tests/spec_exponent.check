@@ -1,0 +1,708 @@
+#suite sprintf_spec_exponent
+
+#test sprintf_spec_exponent1
+// Test default exponent format.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %e", x);
+s21_sprintf(buff2, "TEST1 %e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent2
+// Test zero-padded exponent format.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %0e", x);
+s21_sprintf(buff2, "TEST2 %0e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent3
+// Test space-prefixed positive number exponent format.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 % e", x);
+s21_sprintf(buff2, "TEST3 % e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent4
+// Test left-justified exponent format
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %-e", x);
+s21_sprintf(buff2, "TEST4 %-e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent5
+// Test sign-prefixed exponent format
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %+e", x);
+s21_sprintf(buff2, "TEST5 %+e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent6
+// Test with specificator1 - Precision alone.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST6 %.e", x);
+s21_sprintf(buff2, "TEST6 %.e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent7
+// Test with specificator1 - Width and e specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST7 %5.e", x);
+s21_sprintf(buff2, "TEST7 %5.e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent8
+// Test with specificator1 - Width alone.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST8 %5e", x);
+s21_sprintf(buff2, "TEST8 %5e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent9
+// Test with specificator1 - Precision of 5.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST9 %.5e", x);
+s21_sprintf(buff2, "TEST9 %.5e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent10
+// Test with specificator1 - Width of 5 and Precision of 5.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST10 %5.5e", x);
+s21_sprintf(buff2, "TEST10 %5.5e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent11
+// Test with specificator2 and big number - Precision alone.
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST11 %.e", x);
+s21_sprintf(buff2, "TEST11 %.e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent12
+// Test with specificator2 and big number - Width and e specifier.
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST12 %5.e", x);
+s21_sprintf(buff2, "TEST12 %5.e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent13
+// Test with specificator2 and big number - Width alone.
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST13 %5e", x);
+s21_sprintf(buff2, "TEST13 %5e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent14
+// Test with specificator2 and big number - Precision of 5.
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST14 %.5e", x);
+s21_sprintf(buff2, "TEST14 %.5e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent15
+// Test with specificator2 and big number - Width of 5 and Precision of 5.
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST15 %5.5e", x);
+s21_sprintf(buff2, "TEST15 %5.5e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent16
+// Test with length specifier - Precision alone with long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST16 %Le", x);
+s21_sprintf(buff2, "TEST16 %Le", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent17
+// Test with length specifier and width - Width and e specifier for long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST17 %5.Le", x);
+s21_sprintf(buff2, "TEST17 %5.Le", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent18
+// Test with length specifier - Width alone for long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST18 %5Le", x);
+s21_sprintf(buff2, "TEST18 %5Le", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent19
+// Test with length specifier - Precision of 5 with long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST19 %.5Le", x);
+s21_sprintf(buff2, "TEST19 %.5Le", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent20
+// Test with length specifier - Width of 5 and Precision of 5 with long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST20 %5.5Le", x);
+s21_sprintf(buff2, "TEST20 %5.5Le", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent21
+// Test combination of flags: plus, minus, and '#' with 'e' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST21 %+-#e", x);
+s21_sprintf(buff2, "TEST21 %+-#e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent22
+// Test zero padding with 'e' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST22 %0e", x);
+s21_sprintf(buff2, "TEST22 %0e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent23
+// Test left-justified with space-prefixed positive number 'e' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST23 %- e", x);
+s21_sprintf(buff2, "TEST23 %- e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent24
+// Test combination of plus and zero flags with 'e' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST24 %+0e", x);
+s21_sprintf(buff2, "TEST24 %+0e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent25
+// Test sign-prefixed with 'e' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST25 %+e", x);
+s21_sprintf(buff2, "TEST25 %+e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent26
+// Test combination of flags: plus, minus, '#', and width with 'e' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST26 %+-#12e", x);
+s21_sprintf(buff2, "TEST26 %+-#12e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent27
+// Test combination of zero flag, width, and precision with 'e' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST27 %03.11e", x);
+s21_sprintf(buff2, "TEST27 %03.11e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent28
+// Test combination of plus, minus flags and precision with 'e' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST28 %+-.2e", x);
+s21_sprintf(buff2, "TEST28 %+-.2e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent29
+// Test combination of plus flag, zero flag, width, and precision with 'e' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST29 %+04.2e", x);
+s21_sprintf(buff2, "TEST29 %+04.2e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent30
+// Test combination of plus flag and precision with 'e' specifier.
+double x30 = 12.4579;
+char buff30[S21_MAX] = "";
+char buff30_2[S21_MAX] = "";
+sprintf(buff30, "TEST30 %+.e", x30);
+s21_sprintf(buff30_2, "TEST30 %+.e", x30);
+ck_assert_str_eq(buff30, buff30_2);
+
+#test sprintf_spec_exponent31
+// Check flags together with specificators and length - e for format %+-#12Le
+long double x1 = 12.4579;
+char buff1[S21_MAX] = "";
+char buff1_2[S21_MAX] = "";
+sprintf(buff1, "TEST1 %+-#12Le", x1);
+s21_sprintf(buff1_2, "TEST1 %+-#12Le", x1);
+ck_assert_str_eq(buff1, buff1_2);
+
+#test sprintf_spec_exponent32
+// Check flags together with specificators and length - e for format %03.11Le
+long double x2 = 12.4579;
+char buff2[S21_MAX] = "";
+char buff2_2[S21_MAX] = "";
+sprintf(buff2, "TEST2 %03.11Le", x2);
+s21_sprintf(buff2_2, "TEST2 %03.11Le", x2);
+ck_assert_str_eq(buff2, buff2_2);
+
+#test sprintf_spec_exponent33
+// Check flags together with specificators and length - e for format %+-.2Le
+long double x3 = 12.4579;
+char buff3[S21_MAX] = "";
+char buff3_2[S21_MAX] = "";
+sprintf(buff3, "TEST3 %+-.2Le", x3);
+s21_sprintf(buff3_2, "TEST3 %+-.2Le", x3);
+ck_assert_str_eq(buff3, buff3_2);
+
+#test sprintf_spec_exponent34
+// Check flags together with specificators and length - e for format %+04.2Le
+long double x4 = 12.4579;
+char buff4[S21_MAX] = "";
+char buff4_2[S21_MAX] = "";
+sprintf(buff4, "TEST4 %+04.2Le", x4);
+s21_sprintf(buff4_2, "TEST4 %+04.2Le", x4);
+ck_assert_str_eq(buff4, buff4_2);
+
+#test sprintf_spec_exponent35
+// Check flags together with specificators and length - e for format % .Le
+long double x5 = 12.4579;
+char buff5[S21_MAX] = "";
+char buff5_2[S21_MAX] = "";
+sprintf(buff5, "TEST5 % .Le", x5);
+s21_sprintf(buff5_2, "TEST5 % .Le", x5);
+ck_assert_str_eq(buff5, buff5_2);
+
+#test sprintf_spec_exponent36
+// Check case with basic %E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %E", x);
+s21_sprintf(buff2, "TEST1 %E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent37
+// Check case with flag %0E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %0E", x);
+s21_sprintf(buff2, "TEST2 %0E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent38
+// Check case with flag % E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 % E", x);
+s21_sprintf(buff2, "TEST3 % E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent39
+// Check case with flag %-E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %-E", x);
+s21_sprintf(buff2, "TEST4 %-E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent40
+// Check case with flag %+E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %+E", x);
+s21_sprintf(buff2, "TEST5 %+E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent41
+// Check case with specificator1 %.E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %.E", x);
+s21_sprintf(buff2, "TEST1 %.E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent42
+// Check case with specificator1 %5.E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %5.E", x);
+s21_sprintf(buff2, "TEST2 %5.E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent43
+// Check case with specificator1 %5.3E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %5.3E", x);
+s21_sprintf(buff2, "TEST3 %5.3E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent44
+// Check case with specificator1 %.5E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %.5E", x);
+s21_sprintf(buff2, "TEST4 %.5E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent45
+// Check case with specificator1 %5.5E
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %5.5E", x);
+s21_sprintf(buff2, "TEST5 %5.5E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent46
+// Check case with specificator %.E and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %.E", x);
+s21_sprintf(buff2, "TEST1 %.E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent47
+// Check case with specificator %5.E and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %5.E", x);
+s21_sprintf(buff2, "TEST2 %5.E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent48
+// Check case with specificator %5E and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %5E", x);
+s21_sprintf(buff2, "TEST3 %5E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent49
+// Check case with specificator %.5E and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %.5E", x);
+s21_sprintf(buff2, "TEST4 %.5E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent50
+// Check case with specificator %5.5E and big number
+double x = 122332483472728.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %5.5E", x);
+s21_sprintf(buff2, "TEST5 %5.5E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent51
+// Check length case with specificator %LE
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %LE", x);
+s21_sprintf(buff2, "TEST1 %LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent52
+// Check length case with specificator %5.LE
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %5.LE", x);
+s21_sprintf(buff2, "TEST2 %5.LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent53
+// Check length case with specificator %5LE
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %5LE", x);
+s21_sprintf(buff2, "TEST3 %5LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent54
+// Check length case with specificator %.5LE
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %.5LE", x);
+s21_sprintf(buff2, "TEST4 %.5LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent55
+// Check length case with specificator %5.5LE
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %5.5LE", x);
+s21_sprintf(buff2, "TEST5 %5.5LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent56
+// Check flags with '+' and '#' and 'E' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST36a %+-#E", x);
+s21_sprintf(buff2, "TEST36a %+-#E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent57
+// Check left-justified with 'E' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST36b %-E", x);
+s21_sprintf(buff2, "TEST36b %-E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent58
+// Check space-prefixed with 'E' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST36c %- E", x);
+s21_sprintf(buff2, "TEST36c %- E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent59
+// Check sign-prefixed with zero-padding and 'E' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST36d %+0E", x);
+s21_sprintf(buff2, "TEST36d %+0E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent60
+// Check sign-prefixed with 'E' specifier.
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST36e %+E", x);
+s21_sprintf(buff2, "TEST36e %+E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent61
+// Test combination of flags: plus, minus, '#', and width with 'LE' specifier for long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST31 %+-#12LE", x);
+s21_sprintf(buff2, "TEST31 %+-#12LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent62
+// Test combination of minus flag, width, and precision with 'LE' specifier for long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST32 %-3.11LE", x);
+s21_sprintf(buff2, "TEST32 %-3.11LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent63
+// Test combination of plus, minus flags and precision with 'LE' specifier for long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST33 %+-.2LE", x);
+s21_sprintf(buff2, "TEST33 %+-.2LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent64
+// Test combination of plus flag, zero flag, width, and precision with 'LE' specifier for long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST34 %+04.2LE", x);
+s21_sprintf(buff2, "TEST34 %+04.2LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent65
+// Test combination of space flag and precision with 'LE' specifier for long double.
+long double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST35 % .LE", x);
+s21_sprintf(buff2, "TEST35 % .LE", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent66
+// Check negative number with 'e' specifier.
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST46a %e", x);
+s21_sprintf(buff2, "TEST46a %e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent67
+// Check negative number with 'E' specifier.
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST46b %E", x);
+s21_sprintf(buff2, "TEST46b %E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent68
+// Check negative number with sign-prefixed 'e' specifier.
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST46c %+e", x);
+s21_sprintf(buff2, "TEST46c %+e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent69
+// Check negative number with sign-prefixed 'E' specifier.
+double x = -12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST46d %+E", x);
+s21_sprintf(buff2, "TEST46d %+E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent70
+// Check number less than one with 'e' specifier.
+double x = 0.004579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST44 %e", x);
+s21_sprintf(buff2, "TEST44 %e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent71
+// Check number less than one with 'E' specifier.
+double x = 0.004579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST45 %E", x);
+s21_sprintf(buff2, "TEST45 %E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent72
+// Check number less than one with 'e' specifier, width and precision.
+double x = 0.004579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST46 %3.5e", x);
+s21_sprintf(buff2, "TEST46 %3.5e", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent73
+// Check number less than one with 'E' specifier, width and precision.
+double x = 0.004579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST47 %3.5E", x);
+s21_sprintf(buff2, "TEST47 %3.5E", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent74
+// Check the case of dynamic precision for double with 'e' specificator
+int s = 3;
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %*.e", s, x);
+s21_sprintf(buff2, "TEST1 %*.e", s, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent75
+// Check dynamic precision with set width for double with 'e' specificator
+int s = 3;
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST2 %5.*e", s, x);
+s21_sprintf(buff2, "TEST2 %5.*e", s, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent76
+// Check dynamic width and precision for double with 'e' specificator
+int s = 3;
+double x = 12.4579;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST3 %*.*e", s, s, x);
+s21_sprintf(buff2, "TEST3 %*.*e", s, s, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent77
+// Tests the behavior of s21_sprintf for formatting a long double in exponent notation using width
+int s = 3;
+long double y = 1245.32435;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST4 %*Le", s, y);
+s21_sprintf(buff2, "TEST4 %*Le", s, y);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_exponent78
+// Tests s21_sprintf for formatting a long double using both width and precision in exponent notation
+int s = 3;
+long double y = 1245.32435;
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST5 %*.*Le", s, s, y);
+s21_sprintf(buff2, "TEST5 %*.*Le", s, s, y);
+ck_assert_str_eq(buff, buff2);

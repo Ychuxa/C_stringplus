@@ -1,0 +1,61 @@
+#suite memcmp
+
+#test memcmp1
+// Strings have same symbols
+char str1[S21_MAX] = "Hello, world!";
+char substr1[S21_MAX] = "Hello, world!";
+ck_assert_int_eq(memcmp(str1, substr1, S21_MAX), s21_memcmp(str1, substr1, S21_MAX));
+
+#test memcmp2
+// Strings have different words
+char str2[S21_MAX] = "Hello, world!";
+char substr2[S21_MAX] = "Hello, Earth!";
+ck_assert_int_eq(memcmp(str2, substr2, S21_MAX), s21_memcmp(str2, substr2, S21_MAX));
+
+#test memcmp3
+// Strings have different symbols
+char str3[S21_MAX] = "Hello, world!";
+char substr3[S21_MAX] = "Hello, World!";
+ck_assert_int_eq(memcmp(str3, substr3, S21_MAX), s21_memcmp(str3, substr3, S21_MAX));
+
+#test memcmp4
+// First string is empty
+char str4[S21_MAX] = "";
+char substr4[S21_MAX] = "Hello";
+ck_assert_int_eq(memcmp(str4, substr4, S21_MAX), s21_memcmp(str4, substr4, S21_MAX));
+
+#test memcmp5
+// Second string is empty
+char str5[S21_MAX] = "Hello, world!";
+char substr5[S21_MAX] = "";
+ck_assert_int_eq(memcmp(str5, substr5, S21_MAX), s21_memcmp(str5, substr5, S21_MAX));
+
+#test memcmp6
+// Check path of string
+char str6[S21_MAX] = "Hello, world!";
+char substr6[S21_MAX] = "Hello, World!";
+ck_assert_int_eq(memcmp(str6, substr6, 6), s21_memcmp(str6, substr6, 6));
+
+#test memcmp7
+// Check without check
+char str7[S21_MAX] = "Hello, world!";
+char substr7[S21_MAX] = "Hello";
+ck_assert_int_eq(memcmp(str7, substr7, 0), s21_memcmp(str7, substr7, 0));
+
+#test memcmp8
+// Check same numbers string
+char str8[S21_MAX] = "12345786439";
+char substr8[S21_MAX] = "12345786439";
+ck_assert_int_eq(memcmp(str8, substr8, S21_MAX), s21_memcmp(str8, substr8, S21_MAX));
+
+#test memcmp9
+// Check different numbers string
+char str9[S21_MAX] = "12345786439";
+char substr9[S21_MAX] = "1234439";
+ck_assert_int_eq(memcmp(str9, substr9, S21_MAX), s21_memcmp(str9, substr9, S21_MAX));
+
+#test memcmp10
+// Check path of numbers string
+char str10[S21_MAX] = "12345786439";
+char substr10[S21_MAX] = "1234439";
+ck_assert_int_eq(memcmp(str10, substr10, 4), s21_memcmp(str10, substr10, 4));

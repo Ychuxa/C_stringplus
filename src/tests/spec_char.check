@@ -1,0 +1,46 @@
+#suite sprintf_spec_char
+
+#test sprintf_spec_char1
+// Tests basic character formatting with a non-null character
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char a = 'a';
+sprintf(buff, "Life is %c long lesson in humility. -James M. Barrie", a);
+s21_sprintf(buff2, "Life is %c long lesson in humility. -James M. Barrie", a);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_char2
+// Tests character formatting with a null character '\0'
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char a = '\0';
+sprintf(buff, "Life is %c long lesson in humility. -James M. Barrie", a);
+s21_sprintf(buff2, "Life is %c long lesson in humility. -James M. Barrie", a);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_char3
+// Tests character formatting with left alignment flag
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char a = 'a';
+sprintf(buff, "Life is %-5c long lesson in humility. -James M. Barrie", a);
+s21_sprintf(buff2, "Life is %-5c long lesson in humility. -James M. Barrie", a);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_char4
+// Tests character formatting with field width
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char a = 'a';
+sprintf(buff, "Life is %5c long lesson in humility. -James M. Barrie", a);
+s21_sprintf(buff2, "Life is %5c long lesson in humility. -James M. Barrie", a);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_char5
+// Tests character formatting with field width and left alignment
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char a = 'a';
+sprintf(buff, "Life is %-5c long lesson in humility. -James M. Barrie", a);
+s21_sprintf(buff2, "Life is %-5c long lesson in humility. -James M. Barrie", a);
+ck_assert_str_eq(buff, buff2);

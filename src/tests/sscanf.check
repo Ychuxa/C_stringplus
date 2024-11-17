@@ -1,0 +1,67 @@
+#suite s21_sscanf
+
+#test sscanf1
+// Test with integer, float, and string
+const char *input1 = "123 45.67 hello";
+int a1;
+float b1;
+char c1[MAX_BUFFER_SIZE];
+int n1_std = sscanf(input1, "%d %f %s", &a1, &b1, c1);
+int n1_s21 = s21_sscanf(input1, "%d %f %s", &a1, &b1, c1);
+ck_assert_int_eq(n1_std, n1_s21);
+ck_assert_int_eq(a1, 123);
+ck_assert(fabs(b1 - 45.67f) <= S21_TOL);
+ck_assert_str_eq(c1, "hello");
+
+#test sscanf2
+// Test with only integer
+const char *input2 = "456";
+int a2;
+int n2_std = sscanf(input2, "%d", &a2);
+int n2_s21 = s21_sscanf(input2, "%d", &a2);
+ck_assert_int_eq(n2_std, n2_s21);
+ck_assert_int_eq(a2, 456);
+
+#test sscanf3
+// Test with only float
+const char *input3 = "-123.45";
+float b3;
+int n3_std = sscanf(input3, "%f", &b3);
+int n3_s21 = s21_sscanf(input3, "%f", &b3);
+ck_assert_int_eq(n3_std, n3_s21);
+ck_assert(fabs(b3 + 123.45f) <= S21_TOL);
+
+#test sscanf4
+// Test with only string
+const char *input4 = "world";
+char c4[MAX_BUFFER_SIZE];
+int n4_std = sscanf(input4, "%s", c4);
+int n4_s21 = s21_sscanf(input4, "%s", c4);
+ck_assert_int_eq(n4_std, n4_s21);
+ck_assert_str_eq(c4, "world");
+
+#test sscanf5
+// Test with integer, float, and string with different values
+const char *input5 = "789 0.123 goodbye";
+int a5;
+float b5;
+char c5[MAX_BUFFER_SIZE];
+int n5_std = sscanf(input5, "%d %f %s", &a5, &b5, c5);
+int n5_s21 = s21_sscanf(input5, "%d %f %s", &a5, &b5, c5);
+ck_assert_int_eq(n5_std, n5_s21);
+ck_assert_int_eq(a5, 789);
+ck_assert(fabs(b5 - 0.123f) <= S21_TOL);
+ck_assert_str_eq(c5, "goodbye");
+
+#test sscanf6
+// Test with spaced input
+const char *input6 = "   101   -32.1   spaced  ";
+int a6;
+float b6;
+char c6[MAX_BUFFER_SIZE];
+int n6_std = sscanf(input6, "%d %f %s", &a6, &b6, c6);
+int n6_s21 = s21_sscanf(input6, "%d %f %s", &a6, &b6, c6);
+ck_assert_int_eq(n6_std, n6_s21);
+ck_assert_int_eq(a6, 101);
+ck_assert(fabs(b6 + 32.1f) <= S21_TOL);
+ck_assert_str_eq(c6, "spaced");

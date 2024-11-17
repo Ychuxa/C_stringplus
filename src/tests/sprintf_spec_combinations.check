@@ -1,0 +1,21 @@
+#suite sprintf_spec_combinations
+
+#test sprintf_spec_combinations1
+// Check numbers cases
+int x1 = 10;
+double x2 = 10;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "Let's check num %d - double: %5.5f, exponent: %0e, short case: %g", x1, x2, x2, x2);
+s21_sprintf(buff2, "Let's check num %d - double: %5.5f, exponent: %0e, short case: %g", x1, x2, x2, x2);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_combinations2
+// Check few more cases
+char *x1 = "Hello, World!";
+double x2 = 1478372.3222;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "Its pointer - %p. Lets check shorter way of num %f - %g", x1, x2, x2);
+s21_sprintf(buff2, "Its pointer - %p. Lets check shorter way of num %f - %g", x1, x2, x2);
+ck_assert_str_eq(buff, buff2);

@@ -1,0 +1,74 @@
+#suite sprintf_spec_pointer
+
+#test sprintf_spec_pointer1
+// Testing basic pointer formatting
+char *x = "Hello, World!";
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %p", x);
+s21_sprintf(buff2, "TEST1 %p", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_pointer2
+// Testing multiple pointer format specifiers in one string
+char *x = "Hello, World!";
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %p TEST2 %p", x, x);
+s21_sprintf(buff2, "TEST1 %p TEST2 %p", x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_pointer3
+// Testing width with pointer formatting
+char *x = "Hello, World!";
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "TEST1 %13p", x);
+s21_sprintf(buff2, "TEST1 %13p", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_pointer4
+// Testing non-NULL integer pointer formatting
+char sys[S21_MAX] = "";
+char s21[S21_MAX] = "";
+int value = 42;
+void* ptr = &value;
+sprintf(sys, "%p", ptr);
+s21_sprintf(s21, "%p", ptr);
+ck_assert_str_eq(sys, s21);
+
+#test sprintf_spec_pointer5
+// Testing double pointer formatting
+char sys[S21_MAX] = "";
+char s21[S21_MAX] = "";
+double a = 123.456;
+sprintf(sys, "%p", &a);
+s21_sprintf(s21, "%p", &a);
+ck_assert_str_eq(sys, s21);
+
+#test sprintf_spec_pointer6
+// Testing left-aligned width formatting with pointer
+char sys[S21_MAX] = "";
+char s21[S21_MAX] = "";
+double a = 123.456;
+sprintf(sys, "abc%-20p abc", &a);
+s21_sprintf(s21, "abc%-20p abc", &a);
+ck_assert_str_eq(sys, s21);
+
+#test sprintf_spec_pointer7
+// Testing width formatting with pointer inside a string
+char sys[S21_MAX] = "";
+char s21[S21_MAX] = "";
+double a = 123.456;
+sprintf(sys, "abc%50p abc", &a);
+s21_sprintf(s21, "abc%50p abc", &a);
+ck_assert_str_eq(sys, s21);
+
+#test sprintf_spec_pointer8
+// Testing width formatting with pointer
+char sys[S21_MAX] = "";
+char s21[S21_MAX] = "";
+double a = 123.456;
+sprintf(sys, "%50p", &a);
+s21_sprintf(s21, "%50p", &a);
+ck_assert_str_eq(sys, s21);

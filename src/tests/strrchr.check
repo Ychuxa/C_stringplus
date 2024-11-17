@@ -1,0 +1,79 @@
+#suite strrchr
+
+#test strrchr1
+// last occurrence of a valid character
+char str1[S21_MAX] = "hello world";
+int symbol = 'l'; 
+ck_assert_ptr_eq(strrchr(str1, symbol), s21_strrchr(str1, symbol));
+
+#test strrchr2
+// last occurrence of invalid character
+char str1[S21_MAX] = "hello world";
+int symbol = 'a'; 
+ck_assert_ptr_eq(strrchr(str1, symbol), s21_strrchr(str1, symbol));
+
+#test strrchr3
+// Empty string, character not found
+char str3[S21_MAX] = "";
+int symbol3 = 'a';
+ck_assert_ptr_eq(strrchr(str3, symbol3), s21_strrchr(str3, symbol3));
+
+#test strrchr4
+// Empty string, character found at the beginning
+char str4[S21_MAX] = "";
+int symbol4 = '\0';
+ck_assert_ptr_eq(strrchr(str4, symbol4), s21_strrchr(str4, symbol4));
+
+#test strrchr5
+// Empty string, character found at the end
+char str5[S21_MAX] = "";
+int symbol5 = '\0';
+ck_assert_ptr_eq(strrchr(str5, symbol5), s21_strrchr(str5, symbol5));
+
+#test strrchr6
+// Character found in a string with multiple occurrences
+char str6[S21_MAX] = "hello world";
+int symbol6 = 'o';
+ck_assert_ptr_eq(strrchr(str6, symbol6), s21_strrchr(str6, symbol6));
+
+#test strrchr7
+// Character not found in a string with multiple occurrences
+char str7[S21_MAX] = "hello world";
+int symbol7 = 'z';
+ck_assert_ptr_eq(strrchr(str7, symbol7), s21_strrchr(str7, symbol7));
+
+#test strrchr8
+// Character found at the beginning of a string
+char str8[S21_MAX] = "hello world";
+int symbol8 = 'h';
+ck_assert_ptr_eq(strrchr(str8, symbol8), s21_strrchr(str8, symbol8));
+
+#test strrchr9
+// Character found at the end of a string
+char str9[S21_MAX] = "hello world";
+int symbol9 = 'd';
+ck_assert_ptr_eq(strrchr(str9, symbol9), s21_strrchr(str9, symbol9));
+
+#test strrchr10
+// Check NULL string
+char *str10 = NULL;
+int symbol10 = 'h';
+ck_assert_ptr_eq(s21_strrchr(str10, symbol10), NULL);
+
+#test strrchr11
+// Check NULL string and terminal null
+char *str11 = NULL;
+int symbol11 = '\0';
+ck_assert_ptr_eq(s21_strrchr(str11, symbol11), NULL);
+
+#test strrchr12
+// Check symbol not found in numeric string
+char str12[S21_MAX] = "1234567890";
+int symbol12 = 'a';
+ck_assert_ptr_eq(strrchr(str12, symbol12), s21_strrchr(str12, symbol12));
+
+#test strrchr13
+// Check symbol found in numeric string
+char str13[S21_MAX] = "1234567890";
+int symbol13 = '5';
+ck_assert_ptr_eq(strrchr(str13, symbol13), s21_strrchr(str13, symbol13));

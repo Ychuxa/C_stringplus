@@ -1,0 +1,42 @@
+#suite to_upper
+
+#test to_upper1
+// From lowercase to uppercase
+char str7[] = "hello world";
+char *transformed = s21_to_upper(str7);
+ck_assert_str_eq(transformed, "HELLO WORLD");
+free(transformed);
+
+#test to_upper2
+// From uppercase to uppercase
+char str8[] = "HELLO WORLD";
+char *transformed = s21_to_upper(str8);
+ck_assert_str_eq(transformed, "HELLO WORLD");
+free(transformed);
+
+#test to_upper3
+// Digits
+char str9[] = "1234567890";
+char *transformed = s21_to_upper(str9);
+ck_assert_str_eq(transformed, "1234567890");
+free(transformed);
+
+#test to_upper4
+// Empty string
+char *str10 = NULL;
+char *transformed = s21_to_upper(str10);
+ck_assert_ptr_eq(transformed, NULL);
+
+#test to_upper5
+// Special characters
+char str11[] = " \t\n";
+char *transformed = s21_to_upper(str11);
+ck_assert_str_eq(transformed, " \t\n");
+free(transformed);
+
+#test to_upper6
+// Mixed case
+char str12[] = "HeLlO WoRlD";
+char *transformed = s21_to_upper(str12);
+ck_assert_str_eq(transformed, "HELLO WORLD");
+free(transformed);

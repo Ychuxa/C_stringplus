@@ -1,0 +1,13 @@
+#include <string.h>
+#include <stdio.h>
+
+#include "s21_string.h"
+
+#define S21_TOL 0.001
+
+#if defined(__linux__)
+#define SUM_ERRORS 134
+
+#elif defined(__APPLE__)
+#define SUM_ERRORS 107
+#endif

@@ -1,0 +1,42 @@
+#suite to_lower
+
+#test to_lower1
+// From uppercase to lowercase
+char str1[] = "HELLO WORLD";
+char *transformed = s21_to_lower(str1);
+ck_assert_str_eq(transformed, "hello world");
+free(transformed);
+
+#test to_lower2
+// From lowercase to lowercase
+char str2[] = "hello world";
+char *transformed = s21_to_lower(str2);
+ck_assert_str_eq(transformed, "hello world");
+free(transformed);
+
+#test to_lower3
+// Numbers remain unchanged
+char str3[] = "1234567890";
+char *transformed = s21_to_lower(str3);
+ck_assert_str_eq(transformed, "1234567890");
+free(transformed);
+
+#test to_lower4
+// Empty string
+char *str4 = NULL;
+char *transformed = s21_to_lower(str4);
+ck_assert_ptr_eq(transformed, NULL);
+
+#test to_lower5
+// Special characters remain unchanged
+char str5[] = " \t\n";
+char *transformed = s21_to_lower(str5);
+ck_assert_str_eq(transformed, " \t\n");
+free(transformed);
+
+#test to_lower6
+// Mixed case to lowercase
+char str6[] = "HeLlO WoRlD";
+char *transformed = s21_to_lower(str6);
+ck_assert_str_eq(transformed, "hello world");
+free(transformed);

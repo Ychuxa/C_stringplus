@@ -1,0 +1,61 @@
+#suite strpbrk
+
+#test strpbrk1
+// search for the correct character
+char str4[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char symb[S21_MAX] = "/";
+ck_assert_ptr_eq(strpbrk(str4, symb), s21_strpbrk(str4, symb));
+
+#test strpbrk2
+// search for an invalid character
+char str4[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char symb[S21_MAX] = ".";
+ck_assert_ptr_eq(strpbrk(str4, symb), s21_strpbrk(str4, symb));
+
+#test strpbrk3
+// Searching for multiple characters
+char str3[S21_MAX]= "Hello, world!";
+char symb3[S21_MAX] = "ld";
+ck_assert_ptr_eq(strpbrk(str3, symb3), s21_strpbrk(str3, symb3));
+
+#test strpbrk4
+// Searching in an empty string
+char str4[S21_MAX] = "";
+char symb4[S21_MAX] = "H";
+ck_assert_ptr_eq(strpbrk(str4, symb4), s21_strpbrk(str4, symb4));
+
+#test strpbrk5
+// Searching for an empty set of symbols
+char str5[S21_MAX]= "Hello, world!";
+char symb5[S21_MAX] = "";
+ck_assert_ptr_eq(strpbrk(str5, symb5), s21_strpbrk(str5, symb5));
+
+#test strpbrk6
+// Searching in a NULL string
+char *str6 = NULL;
+char symb6[S21_MAX] = "H";
+ck_assert_ptr_eq(s21_strpbrk(str6, symb6), NULL);
+
+#test strpbrk7
+// Searching for a NULL set of symbols
+char str7[S21_MAX]= "Hello, world!";
+char *symb7 = NULL;
+ck_assert_ptr_eq(s21_strpbrk(str7, symb7), NULL);
+
+#test strpbrk8
+// Searching for multiple characters, some of which are not in the string
+char str8[S21_MAX]= "Hello, world!";
+char symb8[S21_MAX] = "xyzH";
+ck_assert_ptr_eq(strpbrk(str8, symb8), s21_strpbrk(str8, symb8));
+
+#test strpbrk9
+// Searching for a symbol at the end of the string
+char str9[S21_MAX]= "Hello, world!";
+char symb9[S21_MAX] = "!";
+ck_assert_ptr_eq(strpbrk(str9, symb9), s21_strpbrk(str9, symb9));
+
+#test strpbrk10
+// Searching for a symbol at the beginning of the string
+char str10[S21_MAX]= "Hello, world!";
+char symb10[S21_MAX] = "H";
+ck_assert_ptr_eq(strpbrk(str10, symb10), s21_strpbrk(str10, symb10));

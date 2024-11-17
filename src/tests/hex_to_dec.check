@@ -1,0 +1,33 @@
+#suite util_hex_to_dec
+
+#test hex_to_dec1
+// Checks if the function correctly converts the character '0' to its decimal value '0'.
+ck_assert_int_eq(util_hex_to_dec('0'), 0);
+
+#test hex_to_dec2
+// Checks if the function correctly converts the character '1' to its decimal value '1'.
+ck_assert_int_eq(util_hex_to_dec('1'), 1);
+
+#test hex_to_dec3
+// Checks if the function correctly converts the character '9' to its decimal value '9'.
+ck_assert_int_eq(util_hex_to_dec('9'), 9);
+
+#test hex_to_dec4
+// Checks if the function correctly converts the character 'A' to its decimal value '10'.
+ck_assert_int_eq(util_hex_to_dec('A'), 10);
+
+#test hex_to_dec5
+// Checks if the function correctly converts the character 'F' to its decimal value '15'.
+ck_assert_int_eq(util_hex_to_dec('F'), 15);
+
+#test hex_to_dec6
+// Checks if the function correctly converts the lowercase character 'a' to its decimal value '10'.
+ck_assert_int_eq(util_hex_to_dec('a'), 10);
+
+#test hex_to_dec7
+// Checks if the function correctly converts the lowercase character 'f' to its decimal value '15'.
+ck_assert_int_eq(util_hex_to_dec('f'), 15);
+
+#test hex_to_dec8
+// Checks if the function correctly handles a non-hexadecimal character ('g') by returning '-1'.
+ck_assert_int_eq(util_hex_to_dec('g'), -1);

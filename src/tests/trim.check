@@ -1,0 +1,64 @@
+#suite trim
+
+#test trim1
+// Input null trim
+char *triming = "\t\nSchool 21\t\n";
+char *test_trim = NULL;
+char *exp_result = "School 21";
+char *result = (char *) s21_trim(triming, test_trim);
+ck_assert_str_eq(result, exp_result);
+if (result) {free(result);}
+
+#test trim2
+// Input one trim
+char *triming = "\t\nSchool 21\t\n";
+char *test_trim = "\t";
+char *exp_result = "\nSchool 21\t\n";
+char *result = (char *) s21_trim(triming, test_trim);
+ck_assert_str_eq(result, exp_result);
+if (result) {free(result);}
+
+#test trim3
+// Input two trims
+char *triming = "\t\nSchool 21\t\n";
+char *test_trim = "\t\n";
+char *exp_result = "School 21";
+char *result = (char *) s21_trim(triming, test_trim);
+ck_assert_str_eq(result, exp_result);
+if (result) {free(result);}
+
+#test trim4
+// Input not in trim
+char *triming = "\t\nSchool 21\t\n";
+char *test_trim = " ";
+char *exp_result = "\t\nSchool 21\t\n";
+char *result = (char *) s21_trim(triming, test_trim);
+ck_assert_str_eq(result, exp_result);
+if (result) {free(result);}
+
+#test trim5
+// Input empty string
+char *triming = "";
+char *test_trim = "\t\n";
+char *exp_result = "";
+char *result = (char *) s21_trim(triming, test_trim);
+ck_assert_str_eq(result, exp_result);
+if (result) {free(result);}
+
+#test trim6
+// Input string with only trim characters
+char *triming = "\t\t\t\n\n\n";
+char *test_trim = "\t\n";
+char *exp_result = "";
+char *result = (char *) s21_trim(triming, test_trim);
+ck_assert_str_eq(result, exp_result);
+if (result) {free(result);}
+
+#test trim7
+// Input string without trim characters
+char *triming = "School 21";
+char *test_trim = "\t\n";
+char *exp_result = "School 21";
+char *result = (char *) s21_trim(triming, test_trim);
+ck_assert_str_eq(result, exp_result);
+if (result) {free(result);}

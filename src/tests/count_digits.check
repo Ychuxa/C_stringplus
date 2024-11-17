@@ -1,0 +1,29 @@
+#suite count_digits
+
+#test count_digits1
+// Testing the handling of a regular positive number
+int digitsBefore1, digitsAfter1;
+count_digits(123.456L, &digitsBefore1, &digitsAfter1);
+ck_assert_int_eq(digitsBefore1, 3);
+ck_assert_int_eq(digitsAfter1, 14);
+
+#test count_digits2
+// Testing the handling of a positive number where the fractional part is less than 1
+int digitsBefore2, digitsAfter2;
+count_digits(1000.5L, &digitsBefore2, &digitsAfter2);
+ck_assert_int_eq(digitsBefore2, 4);
+ck_assert_int_eq(digitsAfter2, 14);
+
+#test count_digits3
+// Testing the handling of a number less than 1, containing 5 digits after the decimal point
+int digitsBefore3, digitsAfter3;
+count_digits(0.99999L, &digitsBefore3, &digitsAfter3);
+ck_assert_int_eq(digitsBefore3, 0);
+ck_assert_int_eq(digitsAfter3, 14);
+
+#test count_digits4
+// Testing the handling of a negative number
+int digitsBefore4, digitsAfter4;
+count_digits(-987654.321L, &digitsBefore4, &digitsAfter4);
+ck_assert_int_eq(digitsBefore4, 6);
+ck_assert_int_eq(digitsAfter4, 14);

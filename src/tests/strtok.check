@@ -1,0 +1,127 @@
+#suite strtok
+
+#test strtok1
+// Testing tokenization with mixed delimiters
+char str1[S21_MAX] = "This is test/string.for!get lexemes";
+char str2[S21_MAX] = "This is test/string.for!get lexemes";
+char delim[S21_MAX] = "/. ";
+char *new_str1 = strtok(str1, delim);
+char *new_str2 = s21_strtok(str2, delim);
+while(new_str1 != NULL){
+    ck_assert_pstr_eq(new_str1, new_str2);
+    new_str1 = strtok(NULL, delim);
+    new_str2 = s21_strtok(NULL, delim);
+}
+
+#test strtok2
+// Testing tokenization with repeated delimiters
+char str1[S21_MAX] = "/test1 test2/////test3 test4/test5";
+char str2[S21_MAX] = "/test1 test2/////test3 test4/test5";
+char delim[S21_MAX] = "/";
+char *new_str1 = strtok(str1, delim);
+char *new_str2 = s21_strtok(str2, delim);
+while(new_str1 != NULL){
+    ck_assert_pstr_eq(new_str1, new_str2);
+    new_str1 = strtok(NULL, delim);
+    new_str2 = s21_strtok(NULL, delim);
+}
+
+#test strtok3
+// Testing tokenization until NULL return
+char str1[S21_MAX] = "test1/test2";
+char str2[S21_MAX] = "test1/test2";
+char delim[S21_MAX] = "/";
+char *new_str1 = strtok(str1, delim);
+char *new_str2 = s21_strtok(str2, delim);
+ck_assert_pstr_eq(new_str1, new_str2);
+new_str1 = strtok(NULL, delim);
+new_str2 = s21_strtok(NULL, delim);
+ck_assert_pstr_eq(new_str1, new_str2);
+new_str1 = strtok(NULL, delim);
+new_str2 = s21_strtok(NULL, delim);
+
+#test strtok4
+// Testing tokenization on an empty string
+char str1[S21_MAX] = "";
+char str2[S21_MAX] = "";
+char delim[S21_MAX] = "/. ";
+char *new_str1 = strtok(str1, delim);
+char *new_str2 = s21_strtok(str2, delim);
+ck_assert_pstr_eq(new_str1, new_str2);
+
+#test strtok5
+// Testing tokenization with correct delimiter
+char str3[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char str4[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char del[] = "/"; 
+ck_assert_pstr_eq(strtok(str3, del), s21_strtok(str4, del));
+
+#test strtok6
+// Testing tokenization with invalid delimiter
+char str3[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char str4[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char del[] = "."; 
+ck_assert_pstr_eq(strtok(str3, del), s21_strtok(str4, del));
+
+#test strtok7
+// Testing tokenization with multiple delimiters
+char str3[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char str4[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char del[] = "t/"; 
+ck_assert_pstr_eq(strtok(str3, del), s21_strtok(str4, del));
+
+#test strtok8
+// Testing tokenization with special characters in delimiters
+char str3[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char str4[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char del[] = "t/?"; 
+ck_assert_pstr_eq(strtok(str3, del), s21_strtok(str4, del));
+
+#test strtok9
+// Testing tokenization with a combination of special characters and alphanumeric characters in delimiters
+char str3[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char str4[S21_MAX]= "tabt1/tcdt2/teft3/tght4";
+char del[] = "%t/?"; 
+ck_assert_pstr_eq(strtok(str3, del), s21_strtok(str4, del));
+
+#test strtok10
+// Testing tokenization with a string that has no delimiters
+char str3[] = "NoDelimiter";
+char str4[] = "NoDelimiter";
+char *delim = ",";
+ck_assert_pstr_eq(s21_strtok(str4, delim),  strtok(str3, delim));
+
+#test strtok11
+// Testing tokenization with an empty string and a delimiter
+char str3[] = "";
+char str4[] = "";
+char *delim = ",";
+ck_assert_pstr_eq(s21_strtok(str4, delim),  strtok(str3, delim));
+
+#test strtok12
+// Testing tokenization with NULL string
+char *str1 = NULL;
+char delim[S21_MAX] = "/. ";
+char *new_str1 = s21_strtok(str1, delim);
+ck_assert_ptr_eq(new_str1, NULL);
+
+#test strtok13
+// Testing tokenization with empty delimiter
+char str1[S21_MAX] = "This is test string";
+char delim[] = "";
+char *new_str1 = s21_strtok(str1, delim);
+ck_assert_pstr_eq(new_str1, str1);
+
+#test strtok14
+// Testing tokenization with NULL delimiter
+char str1[S21_MAX] = "This is test string";
+char *delim = NULL;
+char *new_str1 = s21_strtok(str1, delim);
+ck_assert_pstr_eq(new_str1, str1);
+
+#test strtok15
+// Testing tokenization with both NULL string and NULL delimiter
+char *str1 = NULL;
+char *delim = NULL;
+char *new_str1 = s21_strtok(str1, delim);
+ck_assert_ptr_eq(new_str1, NULL);

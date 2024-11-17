@@ -1,0 +1,76 @@
+#suite strncat
+
+#test strncat1
+// Insert full str2 lenth
+char str1[S21_MAX] = "Hello";
+char str2[S21_MAX] = " World!";
+ck_assert_ptr_eq(strncat(str1, str2, 7), s21_strncat(str1, str2, 7));
+
+#test strncat2
+// Insert 4 characters of str2
+char str1[S21_MAX] = "Lorem";
+char str2[S21_MAX] = " Ipsum";
+ck_assert_ptr_eq(strncat(str1, str2, 4), s21_strncat(str1, str2, 4));
+
+#test strncat3
+// Insert lenth > str2
+char str1[S21_MAX] = "Hello";
+char str2[S21_MAX] = " World!";
+ck_assert_ptr_eq(strncat(str1, str2, 15), s21_strncat(str1, str2, 15));
+
+#test strncat4
+// Insert to empty string
+char str1[S21_MAX] = "";
+char str2[S21_MAX] = " Sup guys?";
+ck_assert_ptr_eq(strncat(str1, str2, 11), s21_strncat(str1, str2, 11));
+
+#test strncat5
+// Insert empty string
+char str1[S21_MAX] = "qwerty";
+char str2[S21_MAX] = "";
+ck_assert_ptr_eq(strncat(str1, str2, 3), s21_strncat(str1, str2, 3));
+
+#test strncat6
+// Insert to str1 with enough size
+char str_strncat[S21_MAX] = "qwerty";
+char str_s21_strncat[S21_MAX] = "qwerty";
+char str2[S21_MAX] = "uiop";
+s21_strncat(str_s21_strncat, str2, 4);
+strncat(str_strncat, str2, 4);
+ck_assert_str_eq(str_strncat, str_s21_strncat);
+
+#test strncat7
+// Basic case
+char destin[S21_MAX] = "School";
+char destin2[S21_MAX] = "School";
+char extra[] = " 21";
+size_t max_len = sizeof(destin) - strlen(destin) - 1;
+ck_assert_str_eq(strncat(destin, extra, max_len), s21_strncat(destin2, extra, max_len));
+
+#test strncat8
+// Empty strs
+char destin[S21_MAX] = "";
+char destin2[S21_MAX] = "";
+char empty[S21_MAX] = "";
+size_t max_len = sizeof(destin) - strlen(destin) - 1;
+ck_assert_str_eq(strncat(destin, empty, max_len), s21_strncat(destin2, empty, max_len));
+
+#test strncat9
+// Extra doesnt fit into destination
+char destin[10] = "School";
+char destin2[10] = "School";
+char extra[] = " 21 is the best school!";
+size_t max_len = sizeof(destin) - strlen(destin) - 1;
+ck_assert_str_eq(strncat(destin, extra, max_len), s21_strncat(destin2, extra, max_len));
+
+#test strncat10
+// Insert str2 to NULL string
+char *str1 = NULL;
+char str2[S21_MAX] = " Ipsum";
+ck_assert_ptr_eq(NULL, s21_strncat(str1, str2, 4));
+
+#test strncat11
+// Insert NULL to str1
+char str1[S21_MAX] = "Its me";
+char *str2 = NULL;
+ck_assert_ptr_eq(NULL, s21_strncat(str1, str2, 5));

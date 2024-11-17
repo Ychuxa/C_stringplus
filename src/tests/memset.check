@@ -1,0 +1,79 @@
+#suite memset
+
+#test memset1
+// Check all string
+char str1[S21_MAX] = "Hello, world!";
+char c1 = 'w';
+ck_assert_pstr_eq(memset(str1, c1, 13), s21_memset(str1, c1, 13));
+
+#test memset2
+// Check part of string
+char str2[S21_MAX] = "Hello, world!";
+char c2 = 'P';
+ck_assert_pstr_eq(memset(str2, c2, 6), s21_memset(str2, c2, 6));
+
+#test memset3
+// Check empty string
+char str3[S21_MAX] = "";
+char c3 = 'H';
+ck_assert_pstr_eq(memset(str3, c3, 9), s21_memset(str3, c3, 9));
+
+#test memset4
+// Check space symbol
+char str4[S21_MAX] = "Hello, world!";
+char c4 = ' ';
+ck_assert_pstr_eq(memset(str4, c4, 3), s21_memset(str4, c4, 3));
+
+#test memset5
+// Check empty string and space symbol
+char str5[S21_MAX] = "";
+char c5 = ' ';
+ck_assert_pstr_eq(memset(str5, c5, 4), s21_memset(str5, c5, 4));
+
+#test memset6
+// Check NULL string
+char *str6 = NULL;
+char c6 = 'w';
+ck_assert_pstr_eq(s21_memset(str6, c6, 4), NULL);
+
+#test memset7
+// Check terminal null
+char str7[S21_MAX] = "Hello, world!";
+char c7 = '\0';
+ck_assert_pstr_eq(memset(str7, c7, 4), s21_memset(str7, c7, 4));
+
+#test memset8
+// Check NULL string and terminal null
+char *str8 = NULL;
+char c8 = '\0';
+ck_assert_pstr_eq(s21_memset(str8, c8, 4), NULL);
+
+#test memset9
+// Check big number of bytes
+char str9[S21_MAX] = "Hello, world!";
+char c9 = 'Q';
+ck_assert_pstr_eq(memset(str9, c9, 100), s21_memset(str9, c9, 100));
+
+#test memset10
+// Check 0 bytes
+char str10[S21_MAX] = "Hello, world!";
+char c10 = 'Q';
+ck_assert_ptr_eq(str10, s21_memset(str10, c10, 0));
+
+#test memset11
+// Check string with special characters
+char str11[S21_MAX] = "@#$%^&*()!~";
+char c11 = '^';
+ck_assert_pstr_eq(memset(str11, c11, 5), s21_memset(str11, c11, 5));
+
+#test memset12
+// Check string with numerical characters
+char str12[S21_MAX] = "1234567890";
+char c12 = '9';
+ck_assert_pstr_eq(memset(str12, c12, 5), s21_memset(str12, c12, 5));
+
+#test memset13
+// Check string with mixed characters
+char str13[S21_MAX] = "Hello123$%^";
+char c13 = '%';
+ck_assert_pstr_eq(memset(str13, c13, 7), s21_memset(str13, c13, 7));

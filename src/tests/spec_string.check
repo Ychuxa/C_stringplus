@@ -1,0 +1,109 @@
+#suite sprintf_spec_string
+
+#test sprintf_spec_string1
+// Case one string
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char str[S21_MAX] = "Hello to V.V.T.";
+sprintf(buff, "%s", str);
+s21_sprintf(buff2, "%s", str);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string2
+// Check width for string
+char str[S21_MAX] = "Hello to V.V.T.";
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%15s", str);
+s21_sprintf(buff2, "%15s", str);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string3
+// Check precision for string
+char str[S21_MAX] = "Hello to V.V.T.";
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%.15s", str);
+s21_sprintf(buff2, "%.15s", str);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string4
+// Check width and precision for string
+char str[S21_MAX] = "Hello to V.V.T.";
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%23.23s", str);
+s21_sprintf(buff2, "%23.23s", str);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string5
+// Check a lot strings
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char str[S21_MAX] = "Hello to V.V.T.";
+sprintf(buff, "%s", str);
+s21_sprintf(buff2, "%s", str);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string6
+// Check a lot strings
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char str2[S21_MAX] = "Let's play!";
+sprintf(buff, "%s", str2);
+s21_sprintf(buff2, "%s", str2);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string7
+// Check a lot strings
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char str3[S21_MAX] = "Bye-bye!";
+sprintf(buff, "%s", str3);
+s21_sprintf(buff2, "%s", str3);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string8
+// Check wide char
+wchar_t str1[6] = L"QWER";
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%ls", str1);
+s21_sprintf(buff2, "%ls", str1);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string9
+// Check wide char
+wchar_t str2[6] = L"TY";
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+sprintf(buff, "%ls", str2);
+s21_sprintf(buff2, "%ls", str2);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string10
+// Тест 4: Прецизия меньше длины строки
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char str[S21_MAX] = "Hello to V.V.T.";
+sprintf(buff, "%.5s", str);
+s21_sprintf(buff2, "%.5s", str);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string11
+// The width is greater than the length of the string
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char str[S21_MAX] = "Hello";
+sprintf(buff, "%10s", str);
+s21_sprintf(buff2, "%10s", str);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_string12
+// Строка с флагом '-'
+char buff[S21_MAX] = "";
+char buff2[S21_MAX] = "";
+char str[S21_MAX] = "Hello";
+sprintf(buff, "%-10s", str);
+s21_sprintf(buff2, "%-10s", str);
+ck_assert_str_eq(buff, buff2);

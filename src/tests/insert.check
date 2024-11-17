@@ -1,0 +1,97 @@
+#suite insert
+
+#test insert1
+// Inserting a string in the middle of the source string
+char s1[S21_MAX] = "abcdefghij";
+char s3[] = "\'I WAS HERE\'";
+char s4[] = "abc\'I WAS HERE\'defghij";
+s21_size_t num = 3;
+char *result = s21_insert(s1, s3, num);
+ck_assert_pstr_eq(s4, result);
+if (result) {free(result);}
+
+#test insert2
+// Insert in the middle
+char *basket = "honer";
+char *ball = "meow";
+size_t st_ind = 2;
+char *result = s21_insert(basket, ball, st_ind);
+ck_assert_str_eq(result, "homeowner");
+if (result) {free(result);}
+
+#test insert3
+// Insert in the beginning
+char *basket = "Bond";
+char *ball = "James ";
+size_t st_ind = 0;
+char *result = s21_insert(basket, ball, st_ind);
+ck_assert_str_eq(result, "James Bond");
+if (result) {free(result);}
+
+#test insert4
+// Insert in the end
+char *basket = "basket";
+char *ball = "ball";
+size_t st_ind = 6;
+char *result = s21_insert(basket, ball, st_ind);
+ck_assert_str_eq(result, "basketball");
+if (result) {free(result);}
+
+#test insert5
+// Insert an empty string
+char *basket = "School 21";
+char *ball = "";
+size_t st_ind = 6;
+char *result = s21_insert(basket, ball, st_ind);
+ck_assert_str_eq(result, basket);
+if (result) {free(result);}
+
+#test insert6
+// Insert at invalid index
+char *basket = "School 21";
+char *ball = "Sber";
+size_t st_ind = 50;
+char *exp_result = NULL;
+char *result = s21_insert(basket, ball, st_ind);
+ck_assert_ptr_eq(result, exp_result);
+
+#test insert7
+// Inserting  in the middle 
+const char *src4 = "abcde";
+const char *str4 = "XYZ";
+size_t start_index4 = 2;
+char *expected4 = "abXYZcde";
+char *result = s21_insert(src4, str4, start_index4);
+ck_assert_str_eq(result, expected4);
+if (result) {free(result);}
+
+#test insert8
+// Inserting a string at the end of the source string (boundary case)
+const char *src5 = "";
+const char *str5 = "hello";
+size_t start_index5 = 0;
+char *expected5 = "hello";
+char *result = s21_insert(src5, str5, start_index5);
+ck_assert_str_eq(result, expected5);
+if (result) {free(result);}
+
+#test insert9
+// Inserting into a null source string
+const char *src1 = NULL;
+const char *str1 = "hello";
+size_t start_index1 = 0;
+ck_assert_ptr_eq(s21_insert(src1, str1, start_index1), NULL);
+
+#test insert10
+// Inserting a null string into the source string
+const char *src2 = "world";
+const char *str2 = NULL;
+size_t start_index2 = 0;
+ck_assert_ptr_eq(s21_insert(src2, str2, start_index2), NULL);
+
+#test insert11
+// Inserting into both null source string and null string
+const char *src3 = NULL;
+const char *str3 = NULL;
+size_t start_index3 = 0;
+ck_assert_ptr_eq(s21_insert(src3, str3, start_index3), NULL);

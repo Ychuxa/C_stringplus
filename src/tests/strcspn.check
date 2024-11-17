@@ -1,0 +1,79 @@
+#suite strcspn
+
+#test strcspn1
+// First string is empty
+char str1[] = "";
+char str2[] = "Hello, World!";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn2
+// Second string is empty
+char str1[] = "Hello, World!";
+char str2[] = "";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn3
+// Check different numbers string
+char str1[] = "5";
+char str2[] = "56";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn4
+// Check same numbers string
+char str1[] = "70028131";
+char str2[] = "70028131";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn5
+// Strings have different symbols
+char str1[] = "ADSFASFAS42312321";
+char str2[] = "0123894567";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn6
+// Strings are empty
+char str1[] = "";
+char str2[] = "";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn7
+// Check for " \0" and "\n\0"
+char str1[] = " \0";
+char str2[] = "\n\0";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn8
+// Strings have different symbols
+char str1[] = "Hello, World!";
+char str2[] = "!";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn9
+// Strings have different symbols
+char str1[] = "Hello, SChoOL!";
+char str2[] = "H!OLo";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn10
+// Check if second string is NULL
+char str1[] = "Hello, World!";
+char *str2 = NULL;
+ck_assert_int_eq(0, s21_strcspn(str1, str2));
+
+#test strcspn11
+// Check if first string is NULL
+char *str1 = NULL;
+char str2[] = "Hello, World!";
+ck_assert_int_eq(0, s21_strcspn(str1, str2));
+
+#test strcspn12
+// Check for NULL
+char *str1 = NULL;
+char *str2 = NULL;
+ck_assert_int_eq(0, s21_strcspn(str1, str2));
+
+#test strcspn13
+// Strings have no common symbols
+char str1[] = "Hello, World!";
+char str2[] = "1234567890";
+ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));

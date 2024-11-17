@@ -1,0 +1,42 @@
+#suite uitoa
+
+#test uitoa1
+// Test conversion of large unsigned integer value to string in base 10.
+unsigned long long value = 1234567890;
+int base = 10;
+char outputString[50];
+char *result = util_uitoa(value, outputString, base);
+ck_assert_str_eq(result, "1234567890");
+
+#test uitoa2
+// Test conversion of hexadecimal value to string in base 16.
+unsigned long long value = 0xABCDEF;
+int base = 16;
+char outputString[50];
+char *result = util_uitoa(value, outputString, base);
+ck_assert_str_eq(result, "ABCDEF");
+
+#test uitoa3
+// Test conversion of zero value to string in base 10.
+unsigned long long value = 0;
+int base = 10;
+char outputString[50];
+char *result = util_uitoa(value, outputString, base);
+ck_assert_str_eq(result, "0");
+
+#test uitoa4
+// Test conversion of zero value to string in base 10.
+unsigned long long value = 0;
+int base = 10;
+char outputString[50];
+char *result = util_uitoa(value, outputString, base);
+ck_assert_str_eq(result, "0");
+
+#test uitoa5
+// Test conversion of a large unsigned long long value to string in base 10.
+unsigned long long value = 1234567890123456789ULL;
+int base = 10;
+char outputString[64];
+char *result = util_uitoa(value, outputString, base);
+ck_assert_str_eq(result, "1234567890123456789");
+

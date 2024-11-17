@@ -1,0 +1,55 @@
+#suite strstr
+
+#test strstr1
+// Substring found at the beginning of the string
+char str1[S21_MAX] = "Hello, world!";
+char substr1[S21_MAX] = "Hello";
+ck_assert_ptr_eq(strstr(str1, substr1), s21_strstr(str1, substr1));
+
+#test strstr2
+// Substring found in the middle of the string
+char str2[S21_MAX] = "Hello, world!";
+char substr2[S21_MAX] = "world";
+ck_assert_ptr_eq(strstr(str2, substr2), s21_strstr(str2, substr2));
+
+#test strstr3
+// Substring found at the end of the string
+char str3[S21_MAX] = "Hello, world!";
+char substr3[S21_MAX] = "!";
+ck_assert_ptr_eq(strstr(str3, substr3), s21_strstr(str3, substr3));
+
+#test strstr4
+// Empty string as the haystack
+char str4[S21_MAX] = "";
+char substr4[S21_MAX] = "world";
+ck_assert_ptr_eq(strstr(str4, substr4), s21_strstr(str4, substr4));
+
+#test strstr5
+// Empty string as the needle
+char str5[S21_MAX] = "Hello, world!";
+char substr5[S21_MAX] = "";
+ck_assert_ptr_eq(strstr(str5, substr5), s21_strstr(str5, substr5));
+
+#test strstr6
+// Substring not found in the string
+char str6[S21_MAX] = "Hello, world!";
+char substr6[S21_MAX] = "school";
+ck_assert_ptr_eq(strstr(str6, substr6), s21_strstr(str6, substr6));
+
+#test strstr7
+// NULL as the haystack
+char *str7 = NULL;
+char substr7[S21_MAX] = "world";
+ck_assert_ptr_eq(s21_strstr(str7, substr7), NULL);
+
+#test strstr8
+// NULL as the needle
+char str8[S21_MAX] = "Hello, world!";
+char *substr8 = NULL;
+ck_assert_ptr_eq(s21_strstr(str8, substr8), NULL);
+
+#test strstr9
+// Both haystack and needle are NULL
+char *str9 = NULL;
+char *substr9 = NULL;
+ck_assert_ptr_eq(s21_strstr(str9, substr9), NULL);

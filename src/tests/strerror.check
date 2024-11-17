@@ -1,0 +1,16 @@
+#suite strerror
+
+#test strerror1
+// Invalid error code
+int err_num = SUM_ERRORS + 1;
+char *err_num1 = s21_strerror(err_num);
+char *err_num2 = strerror(err_num);
+ck_assert_str_eq(err_num1, err_num2);
+
+#test strerror2
+// Test ensures functions match for valid error codes
+for (int i = 0; i < SUM_ERRORS; i++) {
+  char *err_num1 = s21_strerror(i);
+  char *err_num2 = strerror(i);
+  ck_assert_str_eq(err_num1, err_num2);
+}

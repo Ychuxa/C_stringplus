@@ -1,0 +1,234 @@
+#suite sprintf_spec_uint
+
+#test sprintf_spec_uint1
+// Check one case - u
+unsigned int x = 013;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %u TEST2 %u TEST3 %u TEST4 %u TEST5 %u", x, x, x, x, x);
+s21_sprintf(buff2, "TEST1 %u TEST2 %u TEST3 %u TEST4 %u TEST5 %u", x, x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint2
+// Check decimals parameters - u
+unsigned int x = 013;
+long unsigned int x1 = 124124334;
+long unsigned x2 = 1234562132123543;
+unsigned short x3 = 13;
+unsigned short x4 = 1123;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %u TEST2 %lu TEST3 %lu TEST4 %hu TEST5 %hu", x, x1, x2, x3, x4);
+s21_sprintf(buff2, "TEST1 %u TEST2 %lu TEST3 %lu TEST4 %hu TEST5 %hu", x, x1, x2, x3, x4);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint3
+// Check width and precision - u
+unsigned int x = 12;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %3u TEST2 %.u TEST3 %.5u TEST4 %13.5u TEST5 %u", x, x, x, x, x);
+s21_sprintf(buff2, "TEST1 %3u TEST2 %.u TEST3 %.5u TEST4 %13.5u TEST5 %u", x, x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint4
+// Check flags - u
+unsigned int x = 12;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %-3u TEST2 %-.u TEST3 %.5u TEST4 %13.5u", x, x, x, x);
+s21_sprintf(buff2, "TEST1 %-3u TEST2 %-.u TEST3 %.5u TEST4 %13.5u", x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint5
+// Check "*" - u
+unsigned int x = 1332;
+int length = 9;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %*u TEST2 %.*u TEST3 %*.*u", length, x, length, x, length, length, x);
+s21_sprintf(buff2, "TEST1 %*u TEST2 %.*u TEST3 %*.*u", length, x, length, x, length, length, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint6
+// Check one case - o
+int x = 0123;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %o TEST2 %o TEST3 %o TEST4 %o TEST5 %o", x, x, x, x, x);
+s21_sprintf(buff2, "TEST1 %o TEST2 %o TEST3 %o TEST4 %o TEST5 %o", x, x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint7
+// Check decimals parameters - o
+unsigned int x = 013;
+long unsigned int x1 = 124124334;
+long unsigned x2 = 1234562132123543;
+unsigned short x3 = 13;
+unsigned short x4 = 1123;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %o TEST2 %lo TEST3 %lo TEST4 %ho TEST5 %ho", x, x1, x2, x3, x4);
+s21_sprintf(buff2, "TEST1 %o TEST2 %lo TEST3 %lo TEST4 %ho TEST5 %ho", x, x1, x2, x3, x4);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint8
+// Check width and precision - o
+int x = 12;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %3o TEST2 %.o TEST3 %.5o TEST4 %13.5o TEST5 %o", x, x, x, x, x);
+s21_sprintf(buff2, "TEST1 %3o TEST2 %.o TEST3 %.5o TEST4 %13.5o TEST5 %o", x, x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint9
+// Check flags - o
+int x = 12;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %-3o TEST2 %-.o TEST3 %.5o TEST4 %13.5o", x, x, x, x);
+s21_sprintf(buff2, "TEST1 %-3o TEST2 %-.o TEST3 %.5o TEST4 %13.5o", x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint10
+// Check "*" - o
+unsigned int x = 1332;
+int length = 9;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %*o TEST2 %.*o TEST3 %*.*o", length, x, length, x, length, length, x);
+s21_sprintf(buff2, "TEST1 %*o TEST2 %.*o TEST3 %*.*o", length, x, length, x, length, length, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint11
+// Check one case - HEX
+int x = 13;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %x TEST2 %X TEST3 %x TEST4 %X TEST5 %x", x, x, x, x, x);
+s21_sprintf(buff2, "TEST1 %x TEST2 %X TEST3 %x TEST4 %X TEST5 %x", x, x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint12
+// Check decimals parameters - HEX
+unsigned int x = 013;
+long unsigned int x1 = 124124334;
+long unsigned x2 = 1234562132123543;
+unsigned short x3 = 13;
+unsigned short x4 = 1123;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %x TEST2 %lx TEST3 %lX TEST4 %hx TEST5 %hX", x, x1, x2, x3, x4);
+s21_sprintf(buff2, "TEST1 %x TEST2 %lx TEST3 %lX TEST4 %hx TEST5 %hX", x, x1, x2, x3, x4);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint13
+// Check width and precision - HEX1
+int x = 12;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %3x TEST2 %.x TEST3 %.5x TEST4 %13.5x TEST5 %x", x, x, x, x, x);
+s21_sprintf(buff2, "TEST1 %3x TEST2 %.x TEST3 %.5x TEST4 %13.5x TEST5 %x", x, x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint14
+// Check width and precision - HEX2
+int x = 12;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %3X TEST2 %.X TEST3 %.5X TEST4 %13.5X TEST5 %X", x, x, x, x, x);
+s21_sprintf(buff2, "TEST1 %3X TEST2 %.X TEST3 %.5X TEST4 %13.5X TEST5 %X", x, x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint15
+// Check flags - HEX1
+int x = 12;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %-3x TEST2 %-.x TEST3 %.5x TEST4 %13.5x ", x, x, x, x);
+s21_sprintf(buff2, "TEST1 %-3x TEST2 %-.x TEST3 %.5x TEST4 %13.5x ", x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint16
+// Check flags - HEX2
+int x = 12;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %-3X TEST2 %-.X TEST3 %.5X TEST4 %13.5X", x, x, x, x);
+s21_sprintf(buff2, "TEST1 %-3X TEST2 %-.X TEST3 %.5X TEST4 %13.5X", x, x, x, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint17
+// Check "*" - HEX1
+unsigned int x = 1332;
+int length = 9;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %*x TEST2 %.*x TEST3 %*.*x", length, x, length, x, length, length, x);
+s21_sprintf(buff2, "TEST1 %*x TEST2 %.*x TEST3 %*.*x", length, x, length, x, length, length, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint18
+// Check "*" - HEX2
+unsigned int x = 1332;
+int length = 9;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "TEST1 %*X TEST2 %.*X TEST3 %*.*X", length, x, length, x, length, length, x);
+s21_sprintf(buff2, "TEST1 %*X TEST2 %.*X TEST3 %*.*X", length, x, length, x, length, length, x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint19
+// Check for the case when FlagStruct.zero is 'false', and FlagStruct.sharp is 'true' '(%#x)'
+unsigned int x = 31;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "Case1 %#x", x);
+s21_sprintf(buff2, "Case1 %#x", x);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint20
+// Check for the case when both FlagStruct.zero and FlagStruct.sharp are 'true' '(%0#X)'
+unsigned int y = 29;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "Case2 %0#X", y);
+s21_sprintf(buff2, "Case2 %0#X", y);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint21
+// Check for the case when only FlagStruct.sharp is 'true', and zero is not there '(%#X)'
+unsigned int z = 27;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "Case3 %#X", z);
+s21_sprintf(buff2, "Case3 %#X", z);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint22
+// Check for the case when both zero and sharp are there '(%0#x)'
+unsigned int a = 15;
+char buff[S21_MAX] = {0};
+char buff2[S21_MAX] = {0};
+sprintf(buff, "Case4 %0#x", a);
+s21_sprintf(buff2, "Case4 %0#x", a);
+ck_assert_str_eq(buff, buff2);
+
+#test sprintf_spec_uint23
+// Check for the case when only FlagStruct.sharp is 'true' '(%#o)'
+unsigned int z = 15;
+char buff_o_sharp[S21_MAX] = {0};
+char buff2_o_sharp[S21_MAX] = {0};
+sprintf(buff_o_sharp, "CaseO %#o", z);
+s21_sprintf(buff2_o_sharp, "CaseO %#o", z);
+ck_assert_str_eq(buff_o_sharp, buff2_o_sharp);
+
+#test sprintf_spec_uint24
+// Check for the case when both FlagStruct.zero and FlagStruct.sharp are 'true' '(%0#o)'
+unsigned int zz = 15;
+char buff_o_sharp_zero[S21_MAX] = {0};
+char buff2_o_sharp_zero[S21_MAX] = {0};
+sprintf(buff_o_sharp_zero, "CaseOZero %0#o", zz);
+s21_sprintf(buff2_o_sharp_zero, "CaseOZero %0#o", zz);
+ck_assert_str_eq(buff_o_sharp_zero, buff2_o_sharp_zero);
+

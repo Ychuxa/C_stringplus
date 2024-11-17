@@ -1,0 +1,37 @@
+#suite find_exponent
+
+#test find_exponent1
+// Testing the handling of a regular positive number
+int exponentPower1;
+char exponentSign1;
+double result1 = find_exponent(123.456, &exponentPower1, &exponentSign1);
+ck_assert_double_eq_tol(result1, 1.23456, 0.00001);
+ck_assert_int_eq(exponentPower1, 2);
+ck_assert_int_eq(exponentSign1, '\0');
+
+#test find_exponent2
+// Testing the handling of a number where the fractional part is less than 1
+int exponentPower2;
+char exponentSign2;
+double result2 = find_exponent(0.005, &exponentPower2, &exponentSign2);
+ck_assert_double_eq_tol(result2, 5.0, 0.00001);
+ck_assert_int_eq(exponentPower2, -3);
+ck_assert_int_eq(exponentSign2, '-');
+
+#test find_exponent3
+// Testing the handling of a number less than 1, but more than 0
+int exponentPower3;
+char exponentSign3;
+double result3 = find_exponent(0.12345, &exponentPower3, &exponentSign3);
+ck_assert_double_eq_tol(result3, 1.2345, 0.00001);
+ck_assert_int_eq(exponentPower3, -1);
+ck_assert_int_eq(exponentSign3, '-');
+
+#test find_exponent4
+// Testing the handling of a negative number
+int exponentPower4;
+char exponentSign4;
+double result4 = find_exponent(-9876.54321, &exponentPower4, &exponentSign4);
+ck_assert_double_eq_tol(result4, 9.87654321, 0.00001);
+ck_assert_int_eq(exponentPower4, 3);
+ck_assert_int_eq(exponentSign4, '\0');

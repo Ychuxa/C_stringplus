@@ -1,0 +1,34 @@
+#suite util_reverse
+
+#test reverse1
+// Check basic string
+char str_hello[] = "Hello";
+ck_assert_str_eq(util_reverse(str_hello), "olleH");
+
+#test reverse2
+// Check empty string
+char str_empty[S21_MAX] = "";
+ck_assert_str_eq(util_reverse(str_empty), str_empty);
+
+#test reverse3
+// Check NULL string
+char *str_null = NULL;
+ck_assert_ptr_eq(util_reverse(str_null), NULL);
+
+#test reverse4
+// Test util_reverse of a normal string.
+char str1[] = "hello";
+util_reverse(str1);
+ck_assert_str_eq(str1, "olleh");
+
+#test reverse5
+// Test util_reverse of a string with a single character.
+char str_single_char[] = "a";
+util_reverse(str_single_char);
+ck_assert_str_eq(str_single_char, "a");
+
+#test reverse6
+// Test util_reverse of a string with two characters.
+char str_two_chars[] = "ab";
+util_reverse(str_two_chars);
+ck_assert_str_eq(str_two_chars, "ba");

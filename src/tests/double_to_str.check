@@ -1,0 +1,61 @@
+#suite util_double_to_str
+
+#test double_to_str1
+// Check base numbers
+long double num1 = 12345.6789;
+char str1[S21_MAX] = "";
+int length1 = 4;
+int maxSize1 = S21_MAX;
+char test1[S21_MAX] = "12345.6789";
+util_double_to_str(num1, str1, &length1, maxSize1);
+ck_assert_str_eq(str1, test1);
+
+#test double_to_str2
+// Check bigger length
+long double num2 = 1234.5678;
+char str2[S21_MAX] = "";
+int length2 = 5;
+int maxSize2 = S21_MAX;
+char test2[S21_MAX] = "1234.56780";
+util_double_to_str(num2, str2, &length2, maxSize2);
+ck_assert_str_eq(str2, test2);
+
+#test double_to_str3
+// Check smaller length
+long double num3 = 12345.6789;
+char str3[S21_MAX] = "";
+int length3 = 2;
+int maxSize3 = S21_MAX;
+char test3[S21_MAX] = "12345.68";
+util_double_to_str(num3, str3, &length3, maxSize3);
+ck_assert_str_eq(str3, test3);
+
+#test double_to_str4
+// Check string with words
+long double num4 = 12345.6789;
+char str4[S21_MAX] = "HI";
+int length4 = 4;
+int maxSize4 = S21_MAX;
+char test4[S21_MAX] = "HI12345.6789";
+util_double_to_str(num4, str4, &length4, maxSize4);
+ck_assert_str_eq(str4, test4);
+
+#test double_to_str5
+// Check 0 length 
+long double num5 = 12345.6789;
+char str5[S21_MAX] = "";
+int length5 = 0;
+int maxSize5 = S21_MAX;
+char test5[S21_MAX] = "12345";
+util_double_to_str(num5, str5, &length5, maxSize5);
+ck_assert_str_eq(str5, test5);
+
+#test double_to_str6
+// Check negative number
+long double num6 = -12345.6789;
+char str6[S21_MAX] = "";
+int length6 = 4;
+int maxSize6 = S21_MAX;
+char test6[S21_MAX] = "-12345.6789";
+util_double_to_str(num6, str6, &length6, maxSize6);
+ck_assert_str_eq(str6, test6);
